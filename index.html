@@ -241,7 +241,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
     </ul>
     <div class="hero-btns">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary">รับ Day 1 Preview ฟรี →</a>
-      <a href="#days" class="btn-secondary">ดูโครง 7 วัน ↓</a>
+      <a href="#days" class="btn-secondary" onclick="document.getElementById('days').scrollIntoView({behavior:'smooth'});return false;">ดูโครง 7 วัน ↓</a>
     </div>
     <p class="hero-reassurance">เริ่มได้ทันทีหลังกรอก email · ไม่ต้องเตรียมอะไร</p>
   </div>
@@ -408,7 +408,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
       <div class="day-card"><div class="day-num">Day 2</div><div class="day-icon" style="font-size:1.5rem;">✨</div><h3>คันฉ่องส่องใจ</h3><p>เห็นสิ่งที่กดอยู่ชัด และลดแรงกดในหัวลงได้ทันที</p></div>
       <div class="day-card"><div class="day-num">Day 3</div><div class="day-icon">🧭</div><h3>เข็มทิศวิเศษ</h3><p>เลือก "เรื่องเดียวที่ต้องทำวันนี้" และเริ่มได้ทันที</p></div>
       <div class="day-card"><div class="day-num">Day 4</div><div class="day-icon">🚩</div><h3>ธงทอง 3F</h3><p>เปลี่ยนงานยาก ให้กลายเป็นคำตอบที่ใช้ได้ทันที</p></div>
-      <div class="day-card"><div class="day-num">Day 5</div><div class="day-icon">📜</div><h3>เหล็กจาร + ใบลาน</h3><p>ตัดสินใจได้คมขึ้น ด้วยกติกาที่ใช้ซ้ำได้ในงานจริง</p></div>
+      <div class="day-card"><div class="day-num">Day 5</div><div class="day-icon">📜</div><h3>เหล็กจาร + ใบลาน</h3><p>ตัดสินใจได้คมขึ้น ด้วยกติกาที่ใช้ซ้ำได้ในงานจริง</p><p style="font-size:.75rem;color:var(--teal);margin-top:4px;font-weight:600;">✦ ตัดสินใจได้ — ด้วยกติกาของตัวเอง</p></div>
       <div class="day-card"><div class="day-num">Day 6</div><div class="day-icon">🎨</div><h3>พู่กันทิพย์</h3><p>สร้างภาพด้วย AI พร้อมสูตรสั่งภาพ 5 องค์ประกอบ ใช้ได้กับ AI ทุกตัว</p></div>
       <div class="day-card"><div class="day-num">Day 7</div><div class="day-icon" style="font-size:1.5rem;">🌟</div><h3>บันไดวิเศษ 21 ขั้น</h3><p>ได้แผน 21 วันที่จัดลำดับชัด และใช้ต่อได้จริงในชีวิต</p></div>
     </div>
@@ -460,6 +460,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
           <li>ปิด loop ในหัวด้วยความจริง 1 ประโยค</li>
           <li>เห็นว่าระบบทำงานยังไงใน 15 นาที</li>
         </ul>
+        <p style="font-size:.78rem;color:var(--char-light);font-style:italic;margin-bottom:14px;padding:8px 12px;background:var(--lav);border-radius:6px;line-height:1.65;">หมายเหตุ: นี่คือส่วนหนึ่งของ Day 1 เท่านั้น ไม่ใช่คอร์สเต็มค่ะ — ทดลองก่อน แล้วค่อยตัดสินใจ</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary on-white" style="display:block;text-align:center;">รับ Day 1 Preview ฟรี →</a>
       </div>
       <div class="offer-card featured">
@@ -478,7 +479,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
           <li>ระบบที่เชื่อมต่อกันครบ 7 วัน</li>
         </ul>
         <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-primary on-white" style="display:block;text-align:center;">สมัครใน LINE @recodeacademy →</a>
-        <p class="offer-value">15 นาทีต่อวัน × 7 วัน = 7 เครื่องมือที่อยู่กับคุณตลอด</p>
+        
       </div>
     </div>
   </div>
@@ -499,31 +500,31 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
         <p>พื้นที่โปร่ง โล่ง ให้ใจได้หายใจ — จอดความคิดค้างไว้ก่อน เพื่อให้สมองกลับมาโฟกัสกับสิ่งที่สำคัญจริง</p>
         <div class="app-privacy">🔒 เก็บในเครื่องของคุณเท่านั้น ไม่มีใครเห็น</div>
         <div class="app-price">399 บาท</div>
-        <a href="pakjai.html" class="btn-app">เริ่มใช้ได้ทันที</a>
+        <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-app">สั่งซื้อทาง LINE →</a>
       </div>
       <div class="app-card">
         <div class="app-icon">🚩</div>
         <div class="app-from">จาก Day 4</div>
-        <div class="app-result">เปลี่ยนงานยากให้กลายเป็นคำตอบที่ใช้ต่อได้ทันที</div>
-        <p>ใช้ 3F Framework คุยกับ AI เพื่อให้ได้คำตอบที่ต่อยอดงานได้จริง</p>
+        <div class="app-result">3F Framework Tool</div>
+        <p>กรอกงานยาก — ระบบจัดให้เป็น Prompt พร้อมใช้กับ AI ตัวไหนก็ได้ทันที ChatGPT / Claude / Gemini</p>
         <div class="app-price">299 บาท</div>
-        <a href="#" class="btn-app">เร็ว ๆ นี้</a>
+        <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-app">สั่งซื้อทาง LINE →</a>
       </div>
       <div class="app-card">
         <div class="app-icon">⚖️</div>
         <div class="app-from">จาก Day 5</div>
-        <div class="app-result">ตัดสินใจได้ชัด ในเรื่องที่คิดซ้ำอยู่ทุกวัน</div>
-        <p>สร้างกติกาส่วนตัว เพื่อให้ตัดสินใจเร็วขึ้น และไม่ย้อนคิดซ้ำ</p>
+        <div class="app-result">ตัดสินใจได้ — ด้วยกติกาของตัวเอง</div>
+        <p>บอกเรื่องที่ค้างใจ — ระบบสร้างกติกาส่วนตัว 1 ข้อ ที่ใช้ตัดสินใจได้ทันที</p>
         <div class="app-price">299 บาท</div>
-        <a href="#" class="btn-app">เร็ว ๆ นี้</a>
+        <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-app">สั่งซื้อทาง LINE →</a>
       </div>
       <div class="app-card">
         <div class="app-icon">🎨</div>
-        <div class="app-from">จาก Day 6</div>
-        <div class="app-result">สร้างภาพด้วย AI ที่ใช้ต่อในงานได้ทันที</div>
-        <p>สูตร 5 องค์ประกอบ ช่วยให้ได้ภาพที่ตรง ใช้งานต่อได้เลย</p>
-        <div class="app-price">299 บาท</div>
-        <a href="#" class="btn-app">เร็ว ๆ นี้</a>
+        <div class="app-from">แยกขาย</div>
+        <div class="app-result">สร้างภาพสินค้าด้วย AI — ไม่ต้องเก่ง Prompt</div>
+        <p>บอกแค่ว่าอยากได้ภาพแบบไหน — ระบบสร้าง Prompt ให้ทันที ใช้ได้กับ Canva / ChatGPT / Gemini ทุกตัว</p>
+        <div class="app-price">399 บาท</div>
+        <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-app">สั่งซื้อทาง LINE →</a>
       </div>
     </div>
     <div class="apps-upsell">
