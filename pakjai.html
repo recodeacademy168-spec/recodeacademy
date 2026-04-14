@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พักใจ พักคิด — พื้นที่โปร่ง โล่ง ให้ใจได้หายใจ</title>
+<meta name="description" content="จอดความคิดที่ค้างในหัวไว้ก่อน เพื่อให้สมองกลับมาโฟกัสกับสิ่งที่สำคัญที่สุดวันนี้">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --plum: #3D2B4F;
+  --plum-soft: #6B4E7D;
+  --lav: #F5F0F7;
+  --lav-mid: #EDE4F2;
+  --purple: #9B7FBB;
+  --purple-pale: #C8B4DC;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --mint: #E8F5F0;
+  --mint-dark: #B8DDD4;
+  --sage: #7BAF9E;
+  --white: #FFFFFF;
+  --charcoal: #2C2C2C;
+  --char-mid: #4A4A4A;
+  --char-light: #6B6B6B;
+  --fb: 'Sarabun', sans-serif;
+  --fd: 'Cormorant Garamond', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fb);
+  background: var(--lav);
+  color: var(--charcoal);
+  min-height: 100vh;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* HEADER */
+.header {
+  background: var(--plum);
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -20%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(155,127,187,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-brand {
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  color: rgba(245,240,247,.4);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.header h1 {
+  font-family: var(--fd);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.header-tagline {
+  font-size: 1rem;
+  color: rgba(245,240,247,.65);
+  font-weight: 300;
+}
+
+/* MAIN */
+.main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+/* INPUT SECTION */
+.input-section {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 20px rgba(61,43,79,.06);
+  border: 1px solid rgba(61,43,79,.08);
+}
+
+.input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--plum);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-hint {
+  font-size: 0.88rem;
+  color: var(--char-light);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.thought-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(61,43,79,.15);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: var(--fb);
+  color: var(--charcoal);
+  background: var(--lav);
+  resize: vertical;
+  outline: none;
+  transition: border-color .2s;
+  line-height: 1.7;
+}
+
+.thought-input:focus { border-color: var(--purple); background: var(--white); }
+.thought-input::placeholder { color: var(--char-light); font-weight: 300; }
+
+.input-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-park {
+  background: var(--plum);
+  color: var(--white);
+  border: none;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--fb);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  flex: 1;
+}
+.btn-park:hover { background: var(--plum-soft); transform: translateY(-1px); }
+
+.btn-ai {
+  background: linear-gradient(135deg, var(--purple), var(--plum-soft));
+  color: var(--white);
+  border: none;
+  padding: 13px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: var(--fb);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-ai:hover { opacity: .9; transform: translateY(-1px); }
+.btn-ai:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+/* PARKING LOT */
+.parking-section {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count-badge {
+  background: var(--purple);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.btn-clear-all {
+  background: transparent;
+  border: 1px solid rgba(61,43,79,.15);
+  color: var(--char-light);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-family: var(--fb);
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-clear-all:hover { border-color: var(--plum); color: var(--plum); }
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 2px dashed rgba(155,127,187,.3);
+}
+
+.empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.empty-text { font-size: 1rem; color: var(--char-light); line-height: 1.7; }
+
+.thought-list {
+  display: grid;
+  gap: 10px;
+}
+
+.thought-card {
+  background: var(--white);
+  border: 1px solid rgba(61,43,79,.08);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: all .2s;
+  animation: slideIn .3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.thought-card:hover { border-color: rgba(155,127,187,.3); box-shadow: 0 2px 12px rgba(61,43,79,.06); }
+
+.thought-card.done {
+  opacity: .5;
+  background: var(--lav);
+}
+
+.thought-card.done .thought-text {
+  text-decoration: line-through;
+  color: var(--char-light);
+}
+
+.thought-check {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(155,127,187,.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.thought-check:hover { border-color: var(--purple); }
+.thought-check.checked { background: var(--sage); border-color: var(--sage); }
+.thought-check.checked::after { content: '✓'; color: white; font-size: 0.75rem; font-weight: 700; }
+
+.thought-body { flex: 1; }
+
+.thought-text {
+  font-size: 1rem;
+  color: var(--charcoal);
+  line-height: 1.65;
+  margin-bottom: 4px;
+}
+
+.thought-meta {
+  font-size: 0.78rem;
+  color: var(--char-light);
+}
+
+.thought-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  color: var(--char-light);
+}
+.btn-icon:hover { background: var(--lav-mid); }
+
+/* AI SUMMARY */
+.ai-section {
+  background: linear-gradient(135deg, var(--plum) 0%, var(--plum-soft) 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.ai-icon { font-size: 1.4rem; }
+
+.ai-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.ai-response {
+  font-size: 0.95rem;
+  color: rgba(245,240,247,.88);
+  line-height: 1.85;
+  white-space: pre-wrap;
+}
+
+.ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(245,240,247,.6);
+  font-size: 0.9rem;
+}
+
+.dots { display: flex; gap: 4px; }
+.dot {
+  width: 6px; height: 6px;
+  background: var(--purple-pale);
+  border-radius: 50%;
+  animation: bounce .9s infinite;
+}
+.dot:nth-child(2) { animation-delay: .2s; }
+.dot:nth-child(3) { animation-delay: .4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .5; }
+  40% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* FOCUS SECTION */
+.focus-section {
+  background: var(--mint);
+  border: 1.5px solid var(--mint-dark);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.focus-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--plum);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.focus-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--mint-dark);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--fb);
+  background: var(--white);
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color .2s;
+}
+.focus-input:focus { border-color: var(--sage); }
+
+.focus-note {
+  font-size: 0.83rem;
+  color: var(--sage);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* FOOTER */
+.app-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.8rem;
+  color: var(--char-light);
+  border-top: 1px solid rgba(61,43,79,.08);
+}
+
+.app-footer a {
+  color: var(--purple);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--plum);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform .3s ease;
+  z-index: 999;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.8rem; }
+  .input-section { padding: 20px; }
+  .btn-park { flex: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <p class="header-brand">Heart Recode · Recode Academy</p>
+  <h1>พักใจ พักคิด</h1>
+  <p class="header-tagline">พื้นที่โปร่ง โล่ง ให้ใจได้หายใจ</p>
+</div>
+
+<div class="main">
+
+  <!-- INPUT -->
+  <div class="input-section">
+    <label class="input-label">💭 มีอะไรค้างในหัวอยู่บ้างวันนี้?</label>
+    <p class="input-hint">เขียนออกมาได้เลย ไม่ต้องเรียบเรียง ไม่ต้องสมบูรณ์<br>แค่ "พัก" ไว้ก่อน เพื่อให้สมองได้โฟกัสกับสิ่งที่สำคัญจริง ๆ</p>
+    <textarea class="thought-input" id="thoughtInput" placeholder="เช่น ยังไม่ได้โทรหาลูกค้า / รายงานที่ค้างอยู่ / ต้องคุยกับทีมเรื่อง... / กังวลเรื่อง..." rows="3"></textarea>
+    <div class="input-actions">
+      <button class="btn-park" onclick="parkThought()">🅿️ พักความคิดนี้ไว้ก่อน</button>
+      <button class="btn-ai" id="aiBtn" onclick="getAiHelp()">✨ ให้ AI ช่วยจัดลำดับ</button>
+    </div>
+  </div>
+
+  <!-- FOCUS -->
+  <div class="focus-section">
+    <p class="focus-title">🎯 วันนี้ฉันจะโฟกัสแค่เรื่องเดียวคือ...</p>
+    <input type="text" class="focus-input" id="focusInput" placeholder="เขียน 1 เรื่องที่สำคัญที่สุดวันนี้" oninput="saveFocus()">
+    <p class="focus-note">พักเรื่องอื่นไว้ก่อน แล้วกลับมาเมื่อพร้อม</p>
+  </div>
+
+  <!-- AI SUMMARY -->
+  <div class="ai-section" id="aiSection" style="display:none;">
+    <div class="ai-header">
+      <span class="ai-icon">🧠</span>
+      <span class="ai-title">AI ช่วยจัดให้</span>
+    </div>
+    <div id="aiResponse"></div>
+  </div>
+
+  <!-- PARKING LOT -->
+  <div class="parking-section">
+    <div class="section-header">
+      <span class="section-title">
+        🅿️ พื้นที่พักความคิด
+        <span class="count-badge" id="countBadge">0</span>
+      </span>
+      <button class="btn-clear-all" onclick="clearDone()">ลบที่เสร็จแล้ว</button>
+    </div>
+    <div id="thoughtList"></div>
+  </div>
+
+</div>
+
+<div class="app-footer">
+  <p>พักใจ พักคิด by <a href="index.html">Heart Recode</a> · Recode Academy</p>
+  <p style="margin-top:4px">ความคิดของคุณถูกเก็บในเครื่องของคุณเท่านั้น</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let thoughts = [];
+
+// LOAD
+function init() {
+  try {
+    const saved = localStorage.getItem('pakjai_thoughts');
+    if (saved) thoughts = JSON.parse(saved);
+    const focus = localStorage.getItem('pakjai_focus');
+    if (focus) document.getElementById('focusInput').value = focus;
+  } catch(e) { thoughts = []; }
+  render();
+}
+
+// SAVE
+function save() {
+  try { localStorage.setItem('pakjai_thoughts', JSON.stringify(thoughts)); } catch(e) {}
+}
+
+function saveFocus() {
+  try { localStorage.setItem('pakjai_focus', document.getElementById('focusInput').value); } catch(e) {}
+}
+
+// PARK
+function parkThought() {
+  const input = document.getElementById('thoughtInput');
+  const text = input.value.trim();
+  if (!text) { showToast('เขียนความคิดก่อนนะคะ 💭'); return; }
+
+  const thought = {
+    id: Date.now(),
+    text,
+    done: false,
+    time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })
+  };
+
+  thoughts.unshift(thought);
+  save();
+  render();
+  input.value = '';
+  showToast('พักไว้แล้วค่ะ 🌿 ใจโล่งขึ้นนิดนึงไหม?');
+}
+
+// TOGGLE DONE
+function toggleDone(id) {
+  thoughts = thoughts.map(t => t.id === id ? { ...t, done: !t.done } : t);
+  save();
+  render();
+}
+
+// DELETE
+function deleteThought(id) {
+  thoughts = thoughts.filter(t => t.id !== id);
+  save();
+  render();
+}
+
+// CLEAR DONE
+function clearDone() {
+  const count = thoughts.filter(t => t.done).length;
+  if (count === 0) { showToast('ยังไม่มีรายการที่เสร็จค่ะ'); return; }
+  thoughts = thoughts.filter(t => !t.done);
+  save();
+  render();
+  showToast(`ลบออก ${count} รายการแล้วค่ะ ✨`);
+}
+
+// RENDER
+function render() {
+  const list = document.getElementById('thoughtList');
+  const badge = document.getElementById('countBadge');
+  const active = thoughts.filter(t => !t.done).length;
+  badge.textContent = active;
+
+  if (thoughts.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🌿</div>
+        <p class="empty-text">ยังไม่มีความคิดค้างอยู่<br>ใจโล่งดีค่ะ — หรือลองเขียนออกมาดูก็ได้</p>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = thoughts.map(t => `
+    <div class="thought-card ${t.done ? 'done' : ''}">
+      <div class="thought-check ${t.done ? 'checked' : ''}" onclick="toggleDone(${t.id})"></div>
+      <div class="thought-body">
+        <p class="thought-text">${escapeHtml(t.text)}</p>
+        <p class="thought-meta">พักไว้เมื่อ ${t.time}</p>
+      </div>
+      <div class="thought-actions">
+        <button class="btn-icon" onclick="deleteThought(${t.id})" title="ลบ">🗑</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// AI HELP
+async function getAiHelp() {
+  const active = thoughts.filter(t => !t.done);
+  const focus = document.getElementById('focusInput').value.trim();
+
+  if (active.length === 0) {
+    showToast('เพิ่มความคิดก่อนนะคะ แล้ว AI จะช่วยจัดให้ค่ะ');
+    return;
+  }
+
+  const btn = document.getElementById('aiBtn');
+  const section = document.getElementById('aiSection');
+  const response = document.getElementById('aiResponse');
+
+  btn.disabled = true;
+  section.style.display = 'block';
+  response.innerHTML = `<div class="ai-loading"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span>AI กำลังช่วยจัดลำดับให้...</span></div>`;
+
+  const thoughtsList = active.map((t, i) => `${i+1}. ${t.text}`).join('\n');
+  const focusText = focus ? `\nเรื่องที่ผู้ใช้ตั้งใจโฟกัสวันนี้: "${focus}"` : '';
+
+  const prompt = `คุณเป็น "พักใจ พักคิด" ผู้ช่วย AI ที่อบอุ่น เข้าใจ และใช้ภาษาไทยที่ฟังดูเป็นกันเองแต่ให้เกียรติ
+
+ผู้ใช้มีความคิดที่ค้างในหัวดังนี้:
+${thoughtsList}
+${focusText}
+
+กรุณา:
+1. รับรู้ความรู้สึก 1-2 ประโยค (อบอุ่น ไม่เยินยอ)
+2. จัดกลุ่มหรือเรียงลำดับความคิดเหล่านี้ให้ชัดขึ้น โดยแบ่งเป็น:
+   - ทำได้วันนี้ (≤15 นาที)
+   - รอได้ / ทำพรุ่งนี้
+   - ปล่อยวางได้ตอนนี้
+3. ปิดด้วยประโยคให้กำลังใจสั้น ๆ 1 ประโยค
+
+ใช้ภาษาเป็นกันเอง อบอุ่น กระชับ ไม่เยิ่นเย้อ`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content?.map(c => c.text || '').join('') || 'ขอโทษค่ะ ลองใหม่อีกครั้งนะคะ';
+    response.innerHTML = `<div class="ai-response">${escapeHtml(text)}</div>`;
+  } catch(e) {
+    response.innerHTML = `<div class="ai-response">ขอโทษค่ะ เชื่อมต่อไม่ได้ตอนนี้ ลองใหม่อีกครั้งนะคะ 🙏</div>`;
+  }
+
+  btn.disabled = false;
+}
+
+// UTILS
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+// ENTER KEY
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  document.getElementById('thoughtInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.metaKey) parkThought();
+  });
+});
+</script>
+</body>
+</html>
