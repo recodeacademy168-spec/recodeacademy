@@ -130,7 +130,7 @@ h2.d{color:var(--white)}
 .day-card p{font-size:.85rem;color:var(--char-mid);line-height:1.65}
 
 .proof{background:var(--plum-dark)}
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:20px}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}.proof-grid-full{margin-bottom:20px}
 .proof-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:26px}
 .proof-insight{font-size:.8rem;letter-spacing:.06em;color:var(--mint);font-weight:700;margin-bottom:12px}
 .proof-quote{font-size:.92rem;color:rgba(255,255,255,.8);line-height:1.85;margin-bottom:18px;font-style:italic}
@@ -160,7 +160,7 @@ h2.d{color:var(--white)}
 .apps{background:var(--plum)}
 .apps-sub{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:6px}
 .apps-micro{font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:6px;font-style:italic}
-.apps-note{font-size:.85rem;color:var(--mint);font-weight:600;margin-bottom:24px;padding:10px 14px;background:rgba(200,237,224,.15);border-radius:6px;display:block;white-space:pre-line}
+.apps-note{font-size:1rem;color:var(--white);font-weight:700;margin-bottom:24px;padding:16px 20px;background:rgba(200,237,224,.12);border:1px solid rgba(200,237,224,.3);border-radius:8px;display:block;line-height:1.8}
 .apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:28px}
 .app-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px;transition:all .25s}
 .app-card:hover{border-color:rgba(200,237,224,.4);background:rgba(255,255,255,.09)}
@@ -172,7 +172,7 @@ h2.d{color:var(--white)}
 .app-price{font-size:.9rem;color:var(--mint);font-weight:600;margin-bottom:10px}
 .btn-app{display:block;text-align:center;background:transparent;border:1px solid rgba(200,237,224,.35);color:var(--mint);padding:9px;border-radius:6px;font-size:.82rem;font-family:var(--fb);cursor:pointer;transition:all .2s;text-decoration:none}
 .btn-app:hover{background:rgba(58,158,122,.12);border-color:var(--mint)}
-.apps-upsell{text-align:center;font-size:.9rem;color:rgba(255,255,255,.8);padding:18px 24px;border:1px dashed rgba(200,237,224,.4);border-radius:8px;line-height:1.75}
+.apps-upsell{text-align:center;font-size:1rem;color:var(--white);padding:20px 24px;border:1px solid rgba(200,237,224,.4);border-radius:8px;line-height:1.85;background:rgba(200,237,224,.08)}
 .apps-upsell strong{color:var(--mint)}
 
 .who{background:var(--lav-mid)}
@@ -419,25 +419,33 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
   <div class="container fade-in">
     <span class="slabel d">เสียงจากคนที่ลองใช้จริง</span>
     <div class="divider"></div>
-    <h2 class="d">เสียงจากคนที่ลองใช้จริง</h2>
+    <h2 class="d">จากความคิดที่ค้าง → เป็นขั้นตอนที่เริ่มได้ทันที</h2>
     <div class="proof-grid">
       <div class="proof-card">
-        <div class="proof-insight">🧠 "หัวเบาขึ้น เพราะรู้ว่าวันนี้ต้องโฟกัสอะไร"</div>
-        <p class="proof-quote">งานจัดซื้อในโรงพยาบาลมีเอกสารและเดดไลน์ทับกันตลอด พอใช้ระบบนี้แค่ 3 วันแรก รู้เลยว่าวันนี้ควรทำอะไรเป็นเรื่องเดียว</p>
+        <div class="proof-insight">"จากความคิดที่ค้าง → เหลือขั้นตอนที่เริ่มได้ทันที"</div>
+        <p class="proof-quote">งานจัดซื้อมีทั้งเอกสารและเดดไลน์ที่ชนกันตลอด พอใช้ระบบนี้ ความคิดที่เคยกระจัดกระจาย ถูกเรียบเป็นลำดับ ทำให้เริ่มงานได้ทันทีโดยไม่ต้องลังเล</p>
         <p class="proof-name">ชัชสรัญ เอี่ยมละออ</p>
         <p class="proof-title">เจ้าหน้าที่จัดซื้ออาวุโส — รพ.รามาธิบดี</p>
       </div>
       <div class="proof-card">
-        <div class="proof-insight">⚙️ "มี framework ชัด ทำตามได้จริง"</div>
-        <p class="proof-quote">ในฐานะ IT Manager ที่ต้องดูทั้งระบบและทีม สิ่งที่ชอบคือมีขั้นตอนชัด ทำตามแล้วได้ผลลัพธ์จริง ไม่ต้องเดาเอง</p>
+        <div class="proof-insight">"เห็นโครงแล้วรู้เลยว่าเอาไปใช้กับ AI ได้จริง"</div>
+        <p class="proof-quote">สิ่งที่เห็นคือมีการวางโครงชัด โดยเฉพาะ 3F ที่ช่วยให้การสื่อสารกับ AI ไม่หลุดประเด็น ทำให้ผลลัพธ์ที่ได้นำไปใช้ต่อในงานได้จริง</p>
         <p class="proof-name">บุญวิทย์ เอกประทุมชัย</p>
-        <p class="proof-title">ผู้จัดการ IT — Samsonite Thailand</p>
+        <p class="proof-title">IT Manager — Samsonite Thailand</p>
       </div>
       <div class="proof-card">
-        <div class="proof-insight">🧭 "หยุดคิดวน แล้วกลับมาโฟกัสได้เร็วขึ้น"</div>
-        <p class="proof-quote">สิ่งที่ได้จาก Day 3 คือ Mental Parking List ช่วยแยกเรื่องที่ยังไม่ต้องทำออกไปได้ แล้วกลับมาโฟกัสงานหลักได้ทันที</p>
+        <div class="proof-insight">"โครงแบบนี้ ใช้กับงานจริงได้เลย"</div>
+        <p class="proof-quote">มีการวางโครงที่ชัด สามารถนำไปใช้กับการทำงานได้ทันที เป็นแนวทางที่ช่วยให้เรียบงานออกมาเป็นขั้นตอน โดยไม่ต้องเริ่มคิดใหม่ทุกครั้ง</p>
         <p class="proof-name">ปัทมา วิเลเลิศ</p>
         <p class="proof-title">Project Manager</p>
+      </div>
+    </div>
+    <div class="proof-grid-full">
+      <div class="proof-card" style="background:rgba(255,255,255,.1);border-color:rgba(200,237,224,.25)">
+        <div class="proof-insight">"เริ่มจากลองใช้เป็นชิ้นเล็ก แล้วตัดสินใจใช้ทั้งระบบ"</div>
+        <p class="proof-quote">งานบันทึกเสียงต้องจัดคิวนักพากย์หลายคน มีหลายภาษา และมีการแก้ไขตลอด ก่อนหน้านี้ต้องคุมทุกอย่างไว้ในหัว ทำให้จัดลำดับยาก พอได้ลองใช้ เริ่มเห็นว่าความคิดสามารถเรียบออกมาเป็นขั้นตอนได้ เลยตัดสินใจใช้คอร์สเต็มเพื่อจัดการงานทั้งระบบ</p>
+        <p class="proof-name">วีรภัทร พิมพ์ทองฉัตร</p>
+        <p class="proof-title">Sound Recorder — ช่อมะกอกสตูดิโอ</p>
       </div>
     </div>
     <p class="proof-closing">ทุกคนไม่ได้ใช้เวลามากขึ้น แต่ใช้ <strong>"15 นาที" ได้คุ้มขึ้น</strong></p>
@@ -493,8 +501,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
     <h2 class="d">เริ่มจากเครื่องมือที่คุณต้องใช้วันนี้ก่อนก็ได้</h2>
     <p class="apps-sub">ยังไม่ต้องเลือกทั้งคอร์ส เลือก "ตัวที่ช่วยคุณได้ตอนนี้" แล้วเริ่มใช้งานได้เลย</p>
     <p class="apps-micro">คนส่วนใหญ่เริ่มจาก 1 เครื่องมือ แล้วค่อยกลับมาใช้ครบทั้งระบบ</p>
-    <p class="apps-note">💡 ซื้อแยก 4 ตัว = 1,394 บาท
-ซื้อคอร์สเต็ม = 1,500 บาท ครบ 7 วัน</p>
+    <p class="apps-note">💡 ซื้อแยกทั้ง 4 ตัว = 1,394 บาท<br>แค่เพิ่ม <span style="color:var(--mint);font-size:1.15rem;">106 บาท</span> → ได้ครบ 7 วัน + ระบบที่เชื่อมกันทั้งหมด</p>
     <div class="apps-grid">
       <div class="app-card">
         <div class="app-icon">🌿</div>
@@ -532,7 +539,8 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
     </div>
     <div class="apps-upsell">
       ซื้อแยก = ได้ 4 จาก 7<br>
-      <strong>เพิ่มอีกนิดเดียว = ได้ครบทั้ง 7 วัน ใช้ต่อได้เป็นระบบ ไม่ต้องเลือกค่ะ</strong>
+      <strong style="font-size:1.1rem;color:var(--mint);">เพิ่มแค่ 106 บาท = ได้ครบทั้ง 7 วัน</strong><br>
+      ใช้ต่อได้เป็นระบบ ไม่ต้องเลือกค่ะ
     </div>
   </div>
 </section>
