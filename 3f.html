@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3F Framework Tool — จัดระเบียบงานยากให้พร้อมใช้ทันที</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#7E6BAA;--plum-dark:#5A4890;
+  --teal:#3A9E7A;--mint:#C8EDE0;--mint-dark:#A8DCC8;
+  --lav:#F7F7FB;--lav-mid:#EEEEF8;--lav-dark:#E0E0F0;
+  --white:#FFFFFF;--charcoal:#333333;--char-mid:#555555;--char-light:#888888;
+  --fb:'Sarabun',sans-serif;--fd:'Cormorant Garamond',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--fb);background:var(--lav);color:var(--charcoal);font-size:17px;line-height:1.75;min-height:100vh}
+
+.header{background:var(--plum);padding:20px 24px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40%;left:-10%;width:60%;height:150%;background:radial-gradient(ellipse,rgba(200,237,224,.1) 0%,transparent 70%);pointer-events:none}
+.header-brand{font-size:.72rem;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px}
+.header h1{font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.header h1 span{font-family:var(--fd);font-style:italic;color:var(--mint)}
+.header-sub{font-size:.88rem;color:rgba(255,255,255,.58);font-weight:300}
+
+.main{max-width:680px;margin:0 auto;padding:28px 20px 60px}
+
+/* PROGRESS */
+.progress-bar{display:flex;gap:0;margin-bottom:28px;border-radius:8px;overflow:hidden;border:1px solid var(--lav-dark)}
+.progress-step{flex:1;padding:10px 6px;text-align:center;font-size:.78rem;font-weight:600;color:var(--char-light);background:var(--white);transition:all .3s;letter-spacing:.05em;text-transform:uppercase}
+.progress-step.active{background:var(--plum);color:var(--white)}
+.progress-step.done{background:var(--teal);color:var(--white)}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--lav-dark);border-radius:12px;padding:24px;margin-bottom:16px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.step-label{font-size:.72rem;letter-spacing:.18em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.step-title{font-size:1.1rem;font-weight:700;color:var(--plum-dark);margin-bottom:6px;line-height:1.4}
+.step-desc{font-size:.88rem;color:var(--char-mid);margin-bottom:18px;line-height:1.7}
+
+textarea{width:100%;padding:14px 16px;border:1.5px solid var(--lav-dark);border-radius:8px;font-size:1rem;font-family:var(--fb);color:var(--charcoal);background:var(--lav);resize:vertical;outline:none;transition:border-color .2s;line-height:1.7;min-height:100px}
+textarea:focus{border-color:var(--plum);background:var(--white)}
+textarea::placeholder{color:var(--char-light);font-weight:300}
+
+.btn-primary{background:var(--mint);color:var(--teal);border:none;padding:13px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--fb);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--mint-dark);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.btn-secondary{background:transparent;color:var(--char-mid);border:1px solid var(--lav-dark);padding:11px 22px;border-radius:8px;font-size:.9rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.btn-secondary:hover{border-color:var(--plum);color:var(--plum)}
+
+/* FACT REVIEW */
+.fact-list{list-style:none;display:grid;gap:10px;margin-bottom:18px}
+.fact-item{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:var(--lav);border-radius:8px;border:1px solid var(--lav-dark)}
+.fact-num{width:24px;height:24px;background:var(--plum);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:1px}
+.fact-text{font-size:.92rem;color:var(--charcoal);line-height:1.65;flex:1}
+.fact-edit{background:transparent;border:none;color:var(--char-light);cursor:pointer;font-size:.8rem;padding:2px 8px;border-radius:4px;transition:all .2s;flex-shrink:0;font-family:var(--fb)}
+.fact-edit:hover{color:var(--plum);background:var(--lav-mid)}
+
+/* OUTPUT */
+.output-box{background:var(--plum-dark);border-radius:10px;padding:20px;margin-bottom:14px;position:relative}
+.output-label{font-size:.7rem;letter-spacing:.15em;color:var(--mint);font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.output-text{font-size:.92rem;color:rgba(255,255,255,.88);line-height:1.85;white-space:pre-wrap;font-family:var(--fb)}
+.copy-btn{position:absolute;top:14px;right:14px;background:rgba(200,237,224,.15);border:1px solid rgba(200,237,224,.3);color:var(--mint);padding:5px 12px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.copy-btn:hover{background:rgba(200,237,224,.25)}
+.copy-btn.copied{background:var(--teal);color:var(--white);border-color:var(--teal)}
+
+.prompt-box{background:var(--lav-mid);border:1.5px dashed rgba(58,158,122,.35);border-radius:10px;padding:18px;margin-bottom:14px}
+.prompt-label{font-size:.72rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.prompt-text{font-size:.85rem;color:var(--char-mid);line-height:1.8;white-space:pre-wrap;font-family:var(--fb)}
+
+.action-row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* AI LOADING */
+.ai-loading{display:flex;align-items:center;gap:10px;color:var(--char-mid);font-size:.9rem;padding:16px 0}
+.dots{display:flex;gap:4px}
+.dot{width:6px;height:6px;background:var(--plum);border-radius:50%;animation:bounce .9s infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--plum);color:var(--white);padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:500;transition:transform .3s ease;z-index:999;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* DONE */
+.done-banner{background:var(--teal);color:var(--white);border-radius:10px;padding:16px 20px;text-align:center;margin-bottom:16px;font-weight:600}
+
+.footer{text-align:center;padding:16px;font-size:.78rem;color:var(--char-light);border-top:1px solid var(--lav-dark)}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:480px){
+  .main{padding:20px 14px 40px}
+  .card{padding:18px}
+  .btn-primary{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <p class="header-brand">Heart Recode · Recode Academy</p>
+  <h1>🚩 <span>3F Framework</span> Tool</h1>
+  <p class="header-sub">จัดระเบียบงานยาก → ได้ Prompt พร้อมใช้กับ AI ทุกตัว</p>
+</div>
+
+<div class="main">
+  <div class="progress-bar">
+    <div class="progress-step active" id="step1-bar">ขั้น 1</div>
+    <div class="progress-step" id="step2-bar">ขั้น 2</div>
+    <div class="progress-step" id="step3-bar">ขั้น 3</div>
+    <div class="progress-step" id="step4-bar">ผลลัพธ์</div>
+  </div>
+
+  <!-- STEP 1: INPUT -->
+  <div id="step1" class="card">
+    <p class="step-label">ขั้นที่ 1 จาก 3</p>
+    <p class="step-title">บอกงานที่คุณต้องการจัดการวันนี้</p>
+    <p class="step-desc">เขียนอะไรก็ได้ที่คาใจอยู่ ไม่ต้องเรียบเรียง ไม่ต้องสมบูรณ์<br>3F Framework จะช่วยจัดระเบียบให้ค่ะ</p>
+    <textarea id="input1" placeholder="เช่น ต้องเสนองานกับผู้บริหารสัปดาห์หน้า แต่ยังไม่รู้จะเริ่มตรงไหน&#10;หรือ มีอีเมลยากที่ต้องส่งแต่เขียนไม่ออก&#10;หรือ โปรเจกต์ค้างมานานแต่ไม่รู้จะขยับยังไง" rows="4"></textarea>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-primary" onclick="submitStep1()">
+        <span>ให้ 3F จัดให้ →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 2: REVIEW 3F -->
+  <div id="step2" class="card" style="display:none">
+    <p class="step-label">ขั้นที่ 2 จาก 3</p>
+    <p class="step-title">3F Framework วิเคราะห์งานของคุณแล้วค่ะ</p>
+    <p class="step-desc">ตรวจดูและแก้ไขได้ถ้าต้องการ แล้วยืนยันเพื่อไปขั้นต่อไปค่ะ</p>
+    <div id="ai-loading-1" class="ai-loading" style="display:none">
+      <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <span>3F Framework กำลังวิเคราะห์...</span>
+    </div>
+    <ul class="fact-list" id="fact-list"></ul>
+    <div class="action-row">
+      <button class="btn-primary" onclick="submitStep2()">ยืนยัน ไปขั้นต่อไป →</button>
+      <button class="btn-secondary" onclick="resetStep2()">วิเคราะห์ใหม่</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: FOCUS -->
+  <div id="step3" class="card" style="display:none">
+    <p class="step-label">ขั้นที่ 3 จาก 3</p>
+    <p class="step-title">วันนี้คุณอยากให้งานนี้ไปถึงตรงไหนคะ?</p>
+    <p class="step-desc">บอกเป้าหมายเดียวที่ทำได้จริงวันนี้ ไม่ต้องแก้ทั้งหมดค่ะ</p>
+    <textarea id="input3" placeholder="เช่น อยากได้ outline 3 ข้อสำหรับเสนอผู้บริหาร&#10;หรือ อยากได้ email draft ที่ส่งได้ทันที&#10;หรือ อยากรู้ว่าก้าวแรกที่ควรทำคืออะไร" rows="3"></textarea>
+    <div style="margin-top:14px">
+      <button class="btn-primary" onclick="submitStep3()">สร้าง Prompt พร้อมใช้ →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: OUTPUT -->
+  <div id="step4" style="display:none">
+    <div class="done-banner">✅ Prompt พร้อมแล้วค่ะ — copy ไปใช้กับ AI ตัวไหนก็ได้เลย</div>
+
+    <div class="card">
+      <p class="step-label">ผลลัพธ์ 3F Framework</p>
+      <div id="ai-loading-2" class="ai-loading" style="display:none">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <span>กำลังสร้าง Prompt...</span>
+      </div>
+
+      <div id="output-section" style="display:none">
+        <div class="output-box">
+          <p class="output-label">🚩 สรุป 3F ของคุณ</p>
+          <button class="copy-btn" onclick="copyOutput('summary-text', this)">Copy</button>
+          <p class="output-text" id="summary-text"></p>
+        </div>
+
+        <div class="prompt-box">
+          <p class="prompt-label">✨ Prompt พร้อมใช้กับ AI ทุกตัว</p>
+          <p style="font-size:.78rem;color:var(--char-light);margin-bottom:10px;">Copy ข้อความนี้ไปวางใน ChatGPT / Claude / Gemini ได้เลยค่ะ</p>
+          <p class="prompt-text" id="prompt-text"></p>
+        </div>
+
+        <div class="action-row">
+          <button class="btn-primary" onclick="copyOutput('prompt-text', this)" id="copy-prompt-btn">
+            📋 Copy Prompt
+          </button>
+          <button class="btn-primary" onclick="downloadTxt()" style="background:var(--plum);color:var(--white)">
+            ⬇️ Download .txt
+          </button>
+          <button class="btn-secondary" onclick="startOver()">เริ่มงานใหม่</button>
+        </div>
+
+        <p style="font-size:.78rem;color:var(--char-light);margin-top:14px;text-align:center;font-style:italic;">
+          จากโจทย์เดียว 3F Framework แปลงงานนี้ให้พร้อมใช้กับ AI ทุกตัวได้ทันที 🚩
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>3F Framework Tool by <a href="index.html">Heart Recode</a> · Recode Academy</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let factData = [];
+let userInput = '';
+let focusInput = '';
+
+async function callClaude(messages, systemPrompt) {
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages: messages
+    })
+  });
+  const data = await response.json();
+  return data.content?.map(c => c.text || '').join('') || '';
+}
+
+async function submitStep1() {
+  userInput = document.getElementById('input1').value.trim();
+  if (!userInput) { showToast('เขียนงานที่ต้องการจัดการก่อนนะคะ 🚩'); return; }
+
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+  document.getElementById('ai-loading-1').style.display = 'flex';
+  document.getElementById('fact-list').innerHTML = '';
+  updateProgress(2);
+
+  try {
+    const system = `คุณคือ 3F Framework Tool ผู้ช่วยจัดระเบียบงาน
+วิเคราะห์งานที่ผู้ใช้บอกมา แล้วสรุปออกมาเป็น 3 ข้อสั้น ๆ ในรูปแบบ JSON array เท่านั้น
+ไม่ต้องอธิบายว่าแต่ละข้อหมายถึงอะไร
+ตอบเป็น JSON array เท่านั้น เช่น ["ข้อ1","ข้อ2","ข้อ3"]
+แต่ละข้อควรสั้น กระชับ และตรงประเด็น ไม่เกิน 30 คำ`;
+
+    const prompt = `งานที่ต้องจัดการ: ${userInput}
+
+วิเคราะห์และสรุปออกมาเป็น 3 ข้อ ครอบคลุม: บริบท / เป้าหมาย / ข้อจำกัดหรือความเสี่ยง
+ตอบเป็น JSON array เท่านั้น`;
+
+    const result = await callClaude([{role:'user',content:prompt}], system);
+    const clean = result.replace(/```json|```/g,'').trim();
+    factData = JSON.parse(clean);
+  } catch(e) {
+    factData = [
+      'บริบท: ' + userInput.slice(0, 50) + (userInput.length > 50 ? '...' : ''),
+      'เป้าหมาย: ยังไม่ชัดเจน — กรุณาแก้ไขค่ะ',
+      'ข้อจำกัด: ยังไม่ชัดเจน — กรุณาแก้ไขค่ะ'
+    ];
+  }
+
+  document.getElementById('ai-loading-1').style.display = 'none';
+  renderFactList();
+}
+
+function renderFactList() {
+  const list = document.getElementById('fact-list');
+  list.innerHTML = factData.map((f, i) => `
+    <li class="fact-item">
+      <div class="fact-num">${i+1}</div>
+      <div class="fact-text" id="fact-${i}" contenteditable="true" 
+           style="outline:none;min-width:0"
+           onblur="factData[${i}]=this.textContent.trim()">${escHtml(f)}</div>
+      <button class="fact-edit" onclick="focusFact(${i})">✏️ แก้</button>
+    </li>
+  `).join('');
+}
+
+function focusFact(i) {
+  const el = document.getElementById('fact-' + i);
+  el.focus();
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+
+function resetStep2() {
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step1').style.display = 'block';
+  updateProgress(1);
+}
+
+function submitStep2() {
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step3').style.display = 'block';
+  updateProgress(3);
+}
+
+async function submitStep3() {
+  focusInput = document.getElementById('input3').value.trim();
+  if (!focusInput) { showToast('บอกเป้าหมายที่อยากได้ก่อนนะคะ 🚩'); return; }
+
+  document.getElementById('step3').style.display = 'none';
+  document.getElementById('step4').style.display = 'block';
+  document.getElementById('ai-loading-2').style.display = 'flex';
+  document.getElementById('output-section').style.display = 'none';
+  updateProgress(4);
+
+  try {
+    const system = `คุณคือ 3F Framework Tool ผู้ช่วยสร้าง Prompt พร้อมใช้
+ตอบเป็น JSON object มี 2 key: "summary" และ "prompt"
+summary: สรุป 3F ของผู้ใช้เป็นภาษาไทย สั้น กระชับ 3-4 บรรทัด
+prompt: Prompt ภาษาไทยที่ผู้ใช้ copy ไปวางใน AI ได้ทันที เริ่มต้นด้วย "ช่วยฉันด้วยนะคะ:" และมีบริบทครบ พร้อม output ที่ต้องการ
+ห้ามใช้คำว่า FACT FOCUS FORM ในผลลัพธ์`;
+
+    const prompt = `ข้อมูลงาน:
+${factData.map((f,i)=>`${i+1}. ${f}`).join('\n')}
+
+เป้าหมายวันนี้: ${focusInput}
+
+สร้าง summary และ prompt พร้อมใช้ค่ะ`;
+
+    const result = await callClaude([{role:'user',content:prompt}], system);
+    const clean = result.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+
+    document.getElementById('summary-text').textContent = parsed.summary;
+    document.getElementById('prompt-text').textContent = parsed.prompt;
+  } catch(e) {
+    const summary = `งาน: ${userInput.slice(0,60)}...\nเป้าหมาย: ${focusInput}\nข้อมูลวิเคราะห์:\n${factData.map((f,i)=>`${i+1}. ${f}`).join('\n')}`;
+    const prompt = `ช่วยฉันด้วยนะคะ:\n\nฉันมีงานที่ต้องจัดการดังนี้:\n${factData.map((f,i)=>`${i+1}. ${f}`).join('\n')}\n\nสิ่งที่ต้องการวันนี้: ${focusInput}\n\nช่วยสร้าง output ที่ใช้ได้ทันทีให้ฉันด้วยนะคะ`;
+    document.getElementById('summary-text').textContent = summary;
+    document.getElementById('prompt-text').textContent = prompt;
+  }
+
+  document.getElementById('ai-loading-2').style.display = 'none';
+  document.getElementById('output-section').style.display = 'block';
+}
+
+function copyOutput(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    showToast('Copy แล้วค่ะ นำไปวางใน AI ได้เลย 🚩');
+  });
+}
+
+function downloadTxt() {
+  const summary = document.getElementById('summary-text').textContent;
+  const prompt = document.getElementById('prompt-text').textContent;
+  const content = `3F FRAMEWORK TOOL — Heart Recode\n${'='.repeat(40)}\n\nสรุป 3F\n${summary}\n\n${'='.repeat(40)}\n\nPrompt พร้อมใช้\n${prompt}\n\n${'='.repeat(40)}\nใช้ได้กับ ChatGPT / Claude / Gemini`;
+  const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = '3F_Framework_' + Date.now() + '.txt';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Download แล้วค่ะ 🚩');
+}
+
+function startOver() {
+  userInput = ''; focusInput = ''; factData = [];
+  document.getElementById('input1').value = '';
+  document.getElementById('input3').value = '';
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step3').style.display = 'none';
+  document.getElementById('step4').style.display = 'none';
+  updateProgress(1);
+}
+
+function updateProgress(step) {
+  for(let i=1;i<=4;i++){
+    const el = document.getElementById(`step${i}-bar`);
+    el.className = 'progress-step';
+    if(i < step) el.classList.add('done');
+    else if(i === step) el.classList.add('active');
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function escHtml(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
