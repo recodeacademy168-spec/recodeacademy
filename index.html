@@ -140,10 +140,10 @@ h2.d{color:var(--white)}
 .proof-closing strong{color:var(--mint);font-style:normal}
 
 .offer{background:var(--lav)}
-.urgency-bar{background:var(--teal);color:var(--white);text-align:center;padding:14px 20px;font-size:.92rem;font-weight:700;border-radius:8px;margin-bottom:28px;letter-spacing:.02em}
+.urgency-bar{background:#C17F24;color:var(--white);text-align:center;padding:18px 24px;font-size:1.1rem;font-weight:700;border-radius:8px;margin-bottom:28px;letter-spacing:.02em;box-shadow:0 4px 16px rgba(193,127,36,.3)}
 #countdown{font-family:var(--fb);font-size:1.3rem;font-weight:700}
-.offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px}
-.offer-card{background:var(--white);border:1px solid var(--lav-dark);border-radius:10px;padding:30px}
+.offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px;align-items:stretch}
+.offer-card{background:var(--white);border:1px solid var(--lav-dark);border-radius:10px;padding:30px;display:flex;flex-direction:column}
 .offer-card.featured{border-color:var(--teal);position:relative;box-shadow:0 8px 32px rgba(58,158,122,.12)}
 .offer-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--white);font-size:.72rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:.08em;white-space:nowrap}
 .offer-tag{font-size:.73rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:8px;display:block}
@@ -152,7 +152,7 @@ h2.d{color:var(--white)}
 .offer-price .original{font-size:.88rem;color:var(--char-light);text-decoration:line-through;margin-right:8px}
 .offer-price .current{font-size:1.9rem;font-weight:700;color:var(--plum-dark);font-family:var(--fb)}
 .offer-price .period{font-size:.8rem;color:var(--char-light);margin-left:3px}
-.offer-list{list-style:none;margin-bottom:22px;display:grid;gap:8px}
+.offer-list{list-style:none;margin-bottom:22px;display:grid;gap:8px;flex:1}
 .offer-list li{font-size:.9rem;color:var(--char-mid);display:flex;gap:8px;align-items:flex-start}
 .offer-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
 .offer-value{font-size:.8rem;color:var(--char-light);font-style:italic;text-align:center;margin-top:10px;line-height:1.65}
@@ -232,7 +232,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-tag">RECODE ACADEMY · 7-DAY SYSTEM</span>
-    <h1>เลิกคิดวน แล้วเริ่มลงมือได้จริง <span>ใน 7 วัน</span></h1>
+    <h1>คิดวนอยู่ในหัว?<br>เริ่มลงมือได้จริง <span>ใน 7 วัน</span></h1>
     <p class="hero-sub">AI ผู้ช่วย + ระบบที่จัดระเบียบความคิด<br>ช่วยให้ตัดสินใจได้คม ใน 15 นาทีต่อวัน</p>
     <ul class="hero-bullets">
       <li>วันละ 15 นาที → ได้คำตอบที่ใช้ต่อได้จริง</li>
@@ -401,7 +401,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
   <div class="container fade-in">
     <span class="slabel">โครงสร้างคอร์ส</span>
     <div class="divider"></div>
-    <h2>7 วัน = 7 เครื่องมือที่ไม่ได้ใช้แค่ตอนเรียน<br>แต่หยิบกลับมาใช้ได้เสมอ</h2>
+    <h2>7 วัน = 7 เครื่องมือที่ใช้ได้ทันที<br>และหยิบกลับมาใช้ได้เสมอ</h2>
     <p class="days-intro">เพราะปัญหาเดิม ๆ ไม่ได้หายไป — แต่คุณจะจัดการมันได้ทุกครั้ง</p>
     <div class="days-grid">
       <div class="day-card"><div class="day-num">Day 1</div><div class="day-icon">🐚</div><h3>หอยสังข์ฟังเสียงจากใจ</h3><p>ได้ 1 ประโยคที่ช่วยปิดความคิดที่วนอยู่ในหัว</p></div>
@@ -457,10 +457,11 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
         <div class="offer-price"><span class="current">ฟรี</span></div>
         <ul class="offer-list">
           <li>สัมผัสระบบจริงก่อนตัดสินใจ</li>
-          <li>ปิด loop ในหัวด้วยความจริง 1 ประโยค</li>
+          <li>เคลียร์ความคิดในหัว ให้เหลือ 1 ประโยคที่ใช้ได้จริง</li>
           <li>เห็นว่าระบบทำงานยังไงใน 15 นาที</li>
+          <li>เริ่มได้ทันที ไม่มีค่าใช้จ่าย</li>
+          <li style="color:var(--char-light);font-style:italic;">นี่คือส่วนหนึ่งของ Day 1 — ไม่ใช่คอร์สเต็มค่ะ</li>
         </ul>
-        <p style="font-size:.78rem;color:var(--char-light);font-style:italic;margin-bottom:14px;padding:8px 12px;background:var(--lav);border-radius:6px;line-height:1.65;">หมายเหตุ: นี่คือส่วนหนึ่งของ Day 1 เท่านั้น ไม่ใช่คอร์สเต็มค่ะ — ทดลองก่อน แล้วค่อยตัดสินใจ</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary on-white" style="display:block;text-align:center;">รับ Day 1 Preview ฟรี →</a>
       </div>
       <div class="offer-card featured">
@@ -473,10 +474,11 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
           <span class="period">บาท</span>
         </div>
         <ul class="offer-list">
-          <li>ของวิเศษ 7 ชิ้น ใช้ซ้ำได้ตลอด</li>
+          <li>ของวิเศษ 7 ชิ้น (เครื่องมือที่ใช้ซ้ำได้จริง)</li>
           <li>เทมเพลต Canva พร้อมใช้</li>
           <li>3F Framework สำหรับคุยกับ AI</li>
           <li>ระบบที่เชื่อมต่อกันครบ 7 วัน</li>
+          <li>ใช้ได้ทันที ไม่ต้องเตรียมอะไรเพิ่ม</li>
         </ul>
         <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-primary on-white" style="display:block;text-align:center;">สมัครใน LINE @recodeacademy →</a>
         
@@ -530,8 +532,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
     </div>
     <div class="apps-upsell">
       ซื้อแยก = ได้ 4 จาก 7<br>
-      เพิ่มอีกนิดเดียว = ได้ครบทั้ง 7 วัน<br>
-      <strong>ใช้ต่อได้เป็นระบบ ไม่ต้องเลือกค่ะ</strong>
+      <strong>เพิ่มอีกนิดเดียว = ได้ครบทั้ง 7 วัน ใช้ต่อได้เป็นระบบ ไม่ต้องเลือกค่ะ</strong>
     </div>
   </div>
 </section>
@@ -609,7 +610,7 @@ footer a{color:rgba(58,158,122,.7);text-decoration:none}
     <p class="final-micro">คนส่วนใหญ่เริ่มจาก Day 1 แล้วค่อยตัดสินใจไปต่อ</p>
     <div class="final-btns">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary">รับ Day 1 Preview ฟรี →</a>
-      <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-secondary">สมัครคอร์สเต็ม →</a>
+      <a href="https://line.me/R/ti/p/@recodeacademy" target="_blank" class="btn-primary" style="background:#C17F24;color:var(--white);">สมัครคอร์สเต็ม →</a>
     </div>
     <p class="final-reassurance">ใช้เวลาไม่นาน · ไม่ต้องเตรียมอะไร · ไม่มีข้อความรบกวน</p>
     <p class="final-close">ความชัดคือสิ่งที่ช่วยให้คุณตัดสินใจได้ดีขึ้นในทุกวัน<br>และคุณสร้างมันได้ <span>ด้วยระบบที่ออกแบบไว้แล้ว ✨</span></p>
