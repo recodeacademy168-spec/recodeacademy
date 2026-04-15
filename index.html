@@ -1,482 +1,124 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17764598682"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17764598682');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Recode — ระบบจัดระเบียบใจและงานใน 7 วัน</title>
+<meta name="description" content="AI ผู้ช่วย + ระบบที่จัดระเบียบความคิด ช่วยให้ตัดสินใจได้คม ใน 15 นาทีต่อวัน">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heart Recode — ระบบจัดระเบียบใจและงานใน 7 วัน</title>
-  <meta name="description" content="AI ผู้ช่วย + ระบบที่จัดระเบียบความคิด ช่วยให้ตัดสินใจได้คม ใน 15 นาทีต่อวัน">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Heart Recode รีเซ็ตสมอง ด้วย AI & Canva","description":"ระบบ 7 วันสำหรับจัดระเบียบความคิด ลดสมองล้า และตัดสินใจได้คมขึ้น","provider":{"@type":"Organization","name":"Recode Academy"},"offers":{"@type":"Offer","price":"1500","priceCurrency":"THB"}}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-  :root{
-    --plum:#7E6BAA;--plum-dark:#5A4890;--plum-mid:#6C8EBF;
-    --lav:#F7F7FB;--lav-mid:#EEEEF8;--lav-dark:#E0E0F0;
-    --mint:#C8EDE0;--teal:#3A9E7A;--teal-dark:#1A5C45;
-    --white:#FFFFFF;--charcoal:#333333;--char-mid:#555555;--char-light:#888888;
-    --fd:'Cormorant Garamond',serif;--fb:'Sarabun',sans-serif;
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17764598682"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17764598682');
+</script>
+
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.open(url, '_blank');
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17764598682/L8iSCLy03fQZEOra5L4-',
+        'event_callback': callback
+    });
+    return false;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--fb);background:var(--lav);color:var(--charcoal);overflow-x:hidden;line-height:1.8;font-size:17px}
-
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;background:rgba(90,72,144,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,237,224,0.2)}
-  .nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:600;color:var(--mint);letter-spacing:.05em;white-space:nowrap}
-  .nav-cta{background:var(--mint);color:var(--teal-dark);padding:7px 14px;border-radius:4px;font-size:.8rem;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap}
-  .nav-cta:hover{background:#A8E0CC;transform:translateY(-1px)}
-
-  .hero{min-height:100vh;background:var(--plum);display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:120%;background:radial-gradient(ellipse,rgba(200,237,224,.08) 0%,transparent 70%);pointer-events:none}
-  .hero-inner{max-width:760px;text-align:center;position:relative;z-index:2;animation:fadeUp .8s ease both}
-  .hero-tag{display:inline-block;border:1px solid rgba(200,237,224,.35);color:var(--mint);font-size:.72rem;letter-spacing:.18em;padding:5px 16px;border-radius:2px;margin-bottom:28px;font-weight:600;text-transform:uppercase}
-  .hero h1{font-family:var(--fd);font-size:clamp(1.8rem,5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.25;margin-bottom:20px}
-  .hero h1 span{color:var(--mint);font-style:italic}
-  .hero-sub{font-size:clamp(1rem,2vw,1.1rem);color:rgba(255,255,255,.72);max-width:560px;margin:0 auto 28px;font-weight:300;line-height:1.85}
-  .hero-bullets{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:40px;list-style:none}
-  .hero-bullets li{font-size:.88rem;color:rgba(255,255,255,.58);display:flex;align-items:center;gap:6px}
-  .hero-bullets li::before{content:'✦';color:var(--mint);font-size:.55rem}
-  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn-primary{display:inline-block;background:var(--mint);color:var(--teal-dark);padding:15px 36px;border-radius:6px;font-size:1rem;font-weight:700;text-decoration:none;letter-spacing:.02em;transition:all .25s;border:none;cursor:pointer;font-family:var(--fb)}
-  .btn-primary:hover{background:#A8E0CC;transform:translateY(-2px);box-shadow:0 10px 28px rgba(58,158,122,.2)}
-  .btn-primary.on-white{background:var(--teal);color:var(--white)}
-  .btn-primary.on-white:hover{background:var(--teal-dark)}
-  .btn-secondary{display:inline-block;background:transparent;color:rgba(255,255,255,.6);padding:13px 28px;border-radius:6px;font-size:.9rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:all .25s}
-  .btn-secondary:hover{border-color:rgba(255,255,255,.45);color:var(--white)}
-  .hero-reassurance{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.32);letter-spacing:.04em}
-
-  section{padding:80px 24px}
-  .container{max-width:880px;margin:0 auto}
-  .container-sm{max-width:680px;margin:0 auto}
-  .slabel{display:block;font-size:.82rem;letter-spacing:.2em;color:var(--plum-dark);font-weight:700;text-transform:uppercase;margin-bottom:10px}
-  .slabel.d{color:var(--mint)}
-  h2{font-family:var(--fb);font-size:clamp(1.4rem,4vw,2.6rem);font-weight:700;line-height:1.35;margin-bottom:24px;color:var(--plum-dark);word-break:keep-all;overflow-wrap:break-word}
-  h2.d{color:var(--white)}
-  .divider{width:40px;height:2px;background:var(--teal);margin-bottom:24px}
-
-  .pain{background:var(--plum)}
-  .pain-intro{font-size:1rem;color:rgba(255,255,255,.58);margin-bottom:28px;font-weight:300}
-  .pain-list{list-style:none;display:grid;gap:10px;margin-bottom:32px}
-  .pain-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:8px;font-size:1rem;color:rgba(255,255,255,.82)}
-  .pain-list li::before{content:'—';color:var(--mint);font-weight:600;flex-shrink:0}
-  .pain-close{font-family:var(--fd);font-size:1.4rem;font-style:italic;color:var(--mint);text-align:center;padding-top:8px}
-
-  .capture{background:var(--lav-dark);border-top:3px solid var(--teal)}
-  .capture h2{color:var(--plum-dark)}
-  .capture-body{font-size:1rem;color:var(--char-mid);margin-bottom:24px;line-height:1.85}
-  .capture-form{display:flex;gap:10px;max-width:480px;flex-wrap:wrap}
-  .capture-form input{flex:1;min-width:200px;padding:14px 16px;border:1.5px solid rgba(90,72,144,.2);border-radius:6px;font-size:1rem;font-family:var(--fb);background:var(--white);color:var(--charcoal);outline:none;transition:border-color .2s}
-  .capture-form input:focus{border-color:var(--plum)}
-  .capture-form input::placeholder{color:var(--char-light)}
-  .capture-note{font-size:.78rem;color:var(--char-light);margin-top:8px;letter-spacing:.03em}
-
-  .problem{background:var(--lav)}
-  .problem-list{list-style:none;display:grid;gap:10px;margin-bottom:24px}
-  .problem-list li{display:flex;gap:12px;align-items:flex-start;font-size:1rem;color:var(--charcoal);padding:6px 0;border-bottom:1px solid rgba(90,72,144,.06)}
-  .problem-list li::before{content:'·';color:var(--teal);font-size:1.6rem;line-height:1;flex-shrink:0;margin-top:-2px}
-  .problem-solution{background:var(--plum);color:rgba(255,255,255,.9);padding:22px 26px;border-radius:8px;font-size:1rem;border-left:3px solid var(--teal);line-height:1.9}
-
-  .founder{background:var(--plum-dark)}
-  .founder-card{background:rgba(255,255,255,.06);border:1px solid rgba(58,158,122,.2);border-radius:10px;padding:40px;position:relative}
-  .founder-card::before{content:'"';font-family:var(--fd);font-size:9rem;color:rgba(58,158,122,.08);position:absolute;top:-24px;left:20px;line-height:1;pointer-events:none}
-  .founder-text{font-size:1rem;color:rgba(255,255,255,.82);line-height:1.95;margin-bottom:28px}
-  .founder-text p{margin-bottom:16px}
-  .founder-text p:last-child{margin-bottom:0}
-  .founder-text strong{color:var(--mint);font-weight:600}
-  .founder-sig{border-top:1px solid rgba(58,158,122,.2);padding-top:18px}
-  .founder-name{font-family:var(--fd);font-size:1.2rem;font-weight:600;color:var(--mint);margin-bottom:3px}
-  .founder-title{font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.04em}
-
-  .promise{background:var(--white)}
-  .promise-intro{font-size:1rem;color:var(--char-mid);margin-bottom:8px;font-style:italic}
-  .transform-list{list-style:none;display:grid;gap:10px;margin-bottom:24px}
-  .transform-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:var(--lav);border-radius:8px;border:1px solid var(--lav-dark);font-size:.95rem;color:var(--charcoal);transition:all .2s}
-  .transform-item:hover{border-color:rgba(58,158,122,.3);background:var(--white)}
-  .transform-arrow{color:var(--teal);font-weight:700;flex-shrink:0;font-size:.9rem;margin-top:2px}
-  .promise-close{font-size:.95rem;font-weight:600;color:var(--plum-dark);text-align:center;padding:14px 16px;background:var(--lav-mid);border-radius:8px;margin-bottom:12px;line-height:1.7;word-break:keep-all}
-  .micro-proof{font-size:.85rem;color:var(--char-mid);font-style:italic;text-align:center;padding:14px 20px;border:1px dashed rgba(58,158,122,.4);border-radius:6px}
-  .who-block{margin-top:20px;padding:18px 20px;background:var(--lav);border-radius:8px;border-left:3px solid var(--plum)}
-  .who-block p{font-size:.9rem;color:var(--char-mid);margin-bottom:6px}
-  .who-block ul{list-style:none;display:grid;gap:4px}
-  .who-block ul li{font-size:.9rem;color:var(--charcoal);display:flex;gap:8px;align-items:flex-start}
-  .who-block ul li::before{content:'·';color:var(--plum);font-size:1.3rem;line-height:1.1;flex-shrink:0}
-
-  .diff{background:var(--lav-mid)}
-  .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .diff-card{padding:26px;border:1px solid var(--lav-dark);border-radius:10px;background:var(--white);transition:all .25s}
-  .diff-card:hover{border-color:rgba(58,158,122,.35);transform:translateY(-3px);box-shadow:0 8px 24px rgba(90,72,144,.07)}
-  .diff-card h3{font-size:1rem;font-weight:700;color:var(--plum-dark);margin-bottom:8px;line-height:1.4}
-  .diff-card p{font-size:.88rem;color:var(--char-mid);line-height:1.75}
-
-  .how{background:var(--plum)}
-  .steps{display:grid;gap:0}
-  .step{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-  .step:last-child{border-bottom:none}
-  .step-num{flex-shrink:0;width:40px;height:40px;border:1.5px solid var(--mint);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:1rem;font-weight:700;color:var(--mint)}
-  .step-content h3{font-weight:600;color:var(--white);margin-bottom:3px;font-size:1rem}
-  .step-content p{font-size:.9rem;color:rgba(255,255,255,.88)}
-  .how-note{margin-top:28px;padding:18px 22px;background:rgba(58,158,122,.15);border:1px solid rgba(58,158,122,.4);border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.9);text-align:center}
-
-  .days{background:var(--lav)}
-  .days-intro{font-size:.95rem;color:var(--char-mid);margin-bottom:28px;line-height:1.8}
-  .days-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-  .day-card{background:var(--white);border:1px solid var(--lav-dark);border-radius:10px;padding:20px;transition:all .25s;position:relative;overflow:hidden}
-  .day-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--plum),var(--teal));transform:scaleX(0);transition:transform .25s}
-  .day-card:hover::after{transform:scaleX(1)}
-  .day-card:hover{border-color:rgba(58,158,122,.3);box-shadow:0 4px 16px rgba(90,72,144,.06)}
-  .day-num{font-size:.72rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:4px}
-  .day-icon{font-size:1.5rem;margin-bottom:8px}
-  .day-card h3{font-size:1rem;font-weight:700;color:var(--plum-dark);margin-bottom:5px}
-  .day-card p{font-size:.85rem;color:var(--char-mid);line-height:1.65}
-
-  .proof{background:var(--plum-dark)}
-  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}.proof-grid-full{margin-bottom:20px}
-  .proof-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:26px}
-  .proof-insight{font-size:.8rem;letter-spacing:.06em;color:var(--mint);font-weight:700;margin-bottom:12px}
-  .proof-quote{font-size:.92rem;color:rgba(255,255,255,.8);line-height:1.85;margin-bottom:18px;font-style:italic}
-  .proof-name{font-weight:600;color:var(--white);font-size:.9rem;margin-bottom:2px}
-  .proof-title{font-size:.78rem;color:rgba(255,255,255,.38)}
-  .proof-closing{text-align:center;font-size:.9rem;color:rgba(255,255,255,.52);padding:16px 0 0;border-top:1px solid rgba(255,255,255,.07)}
-  .proof-closing strong{color:var(--mint);font-style:normal}
-
-  .offer{background:var(--lav)}
-  .urgency-bar{background:#C17F24;color:var(--white);text-align:center;padding:18px 24px;font-size:1.1rem;font-weight:700;border-radius:8px;margin-bottom:28px;letter-spacing:.02em;box-shadow:0 4px 16px rgba(193,127,36,.3)}
-  #countdown{font-family:var(--fb);font-size:1.3rem;font-weight:700}
-  .offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px;align-items:stretch}
-  .offer-card{background:var(--white);border:1px solid var(--lav-dark);border-radius:10px;padding:30px;display:flex;flex-direction:column}
-  .offer-card.featured{border-color:var(--teal);position:relative;box-shadow:0 8px 32px rgba(58,158,122,.12)}
-  .offer-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--white);font-size:.72rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:.08em;white-space:nowrap}
-  .offer-tag{font-size:.73rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:8px;display:block}
-  .offer-card h3{font-family:var(--fb);font-size:1.5rem;font-weight:700;color:var(--plum-dark);margin-bottom:8px}
-  .offer-price{margin-bottom:18px}
-  .offer-price .original{font-size:.88rem;color:var(--char-light);text-decoration:line-through;margin-right:8px}
-  .offer-price .current{font-size:1.9rem;font-weight:700;color:var(--plum-dark);font-family:var(--fb)}
-  .offer-price .period{font-size:.8rem;color:var(--char-light);margin-left:3px}
-  .offer-list{list-style:none;margin-bottom:22px;display:grid;gap:8px;flex:1}
-  .offer-list li{font-size:.9rem;color:var(--char-mid);display:flex;gap:8px;align-items:flex-start}
-  .offer-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
-  .offer-value{font-size:.8rem;color:var(--char-light);font-style:italic;text-align:center;margin-top:10px;line-height:1.65}
-
-  .apps{background:var(--plum)}
-  .apps-sub{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:6px}
-  .apps-micro{font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:6px;font-style:italic}
-  .apps-note{font-size:1rem;color:var(--white);font-weight:700;margin-bottom:24px;padding:16px 20px;background:rgba(200,237,224,.12);border:1px solid rgba(200,237,224,.3);border-radius:8px;display:block;line-height:1.8}
-  .apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:28px}
-  .app-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px;transition:all .25s}
-  .app-card:hover{border-color:rgba(200,237,224,.4);background:rgba(255,255,255,.09)}
-  .app-icon{font-size:1.5rem;margin-bottom:8px}
-  .app-from{font-size:.7rem;color:var(--mint);letter-spacing:.1em;margin-bottom:5px;font-weight:700}
-  .app-result{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.5}
-  .app-card p{font-size:.85rem;color:rgba(255,255,255,.82);line-height:1.65;margin-bottom:14px}
-  .app-privacy{font-size:.78rem;color:rgba(200,237,224,.9);margin-bottom:10px;display:flex;align-items:center;gap:4px}
-  .app-price{font-size:.9rem;color:var(--mint);font-weight:600;margin-bottom:10px}
-  .btn-app{display:block;text-align:center;background:transparent;border:1px solid rgba(200,237,224,.35);color:var(--mint);padding:9px;border-radius:6px;font-size:.82rem;font-family:var(--fb);cursor:pointer;transition:all .2s;text-decoration:none}
-  .btn-app:hover{background:rgba(58,158,122,.12);border-color:var(--mint)}
-  .apps-upsell{text-align:center;font-size:1rem;color:var(--white);padding:20px 24px;border:1px solid rgba(200,237,224,.4);border-radius:8px;line-height:1.85;background:rgba(200,237,224,.08)}
-  .apps-upsell strong{color:var(--mint)}
-
-  .who{background:var(--lav-mid)}
-  .who-list{list-style:none;display:grid;gap:12px;margin-bottom:24px}
-  .who-item{background:var(--white);border:1px solid var(--lav-dark);border-radius:10px;padding:16px 18px;transition:all .2s}
-  .who-item:hover{border-color:rgba(58,158,122,.3)}
-  .who-item-top{font-size:.95rem;font-weight:600;color:var(--plum-dark);margin-bottom:3px;display:flex;gap:10px;align-items:flex-start}
-  .who-item-top::before{content:'✦';color:var(--teal);font-size:.65rem;flex-shrink:0;margin-top:5px}
-  .who-item-sub{font-size:.85rem;color:var(--char-mid);padding-left:18px}
-  .culture-note{font-size:.85rem;color:var(--char-mid);text-align:center;padding:14px 20px;border:1px dashed rgba(90,72,144,.18);border-radius:8px;line-height:1.7;margin-bottom:16px}
-  .who-trigger{text-align:center;font-size:.9rem;color:var(--plum-dark);font-weight:600;padding:14px;word-break:keep-all}
-
-  .faq{background:var(--white)}
-  .faq-list{display:grid;gap:8px}
-  .faq-item{border:1px solid var(--lav-dark);border-radius:10px;overflow:hidden}
-  .faq-q{padding:18px 20px;font-size:.95rem;font-weight:600;color:var(--plum-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--lav);transition:background .2s;gap:12px;line-height:1.5}
-  .faq-q:hover{background:var(--lav-mid)}
-  .faq-q::after{content:'+';font-size:1.4rem;color:var(--teal);font-weight:300;transition:transform .25s;flex-shrink:0}
-  .faq-item.open .faq-q::after{transform:rotate(45deg)}
-  .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;font-size:.92rem;color:var(--char-mid);line-height:1.9;background:var(--white)}
-  .faq-item.open .faq-a{max-height:320px;padding:16px 20px 20px}
-
-  .final-cta{background:var(--plum);text-align:center;padding:60px 24px}
-  .final-cta h2{color:var(--white);max-width:580px;margin:0 auto 14px}
-  .final-cta-sub{color:rgba(255,255,255,.58);font-size:.95rem;margin-bottom:10px}
-  .final-micro{font-size:.85rem;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:28px}
-  .final-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:12px}
-  .final-reassurance{font-size:.85rem;color:rgba(255,255,255,.82);letter-spacing:.03em;margin-bottom:40px}
-  .final-close{font-family:var(--fb);font-size:1rem;color:rgba(255,255,255,.88);max-width:460px;margin:0 auto;line-height:1.85}
-  .final-close span{color:var(--mint);font-weight:600}
-
-  footer{background:var(--plum-dark);border-top:1px solid rgba(200,237,224,.12);padding:24px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.28);letter-spacing:.04em}
-  footer a{color:rgba(58,158,122,.7);text-decoration:none}
-
-  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-  .fade-in.visible{opacity:1;transform:translateY(0)}
-
-  @media(max-width:700px){.diff-grid{grid-template-columns:1fr!important}.days-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.apps-grid{grid-template-columns:1fr!important}}
-  @media(max-width:600px){h2{font-size:1.35rem!important;line-height:1.4!important}.hero h1{font-size:1.75rem!important;line-height:1.3!important}
-    nav{padding:12px 16px}
-    section{padding:60px 16px}
-    .founder-card{padding:24px 18px}
-    .btn-secondary{display:none}
-    .capture-form{flex-direction:column}
-    .hero h1{font-size:2rem}
-  }
-  </style>
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Heart Recode รีเซ็ตสมอง ด้วย AI & Canva","description":"ระบบ 7 วันสำหรับจัดระเบียบความคิด ลดสมองล้า และตัดสินใจได้คมขึ้น","provider":{"@type":"Organization","name":"Recode Academy"},"offers":{"@type":"Offer","price":"1500","priceCurrency":"THB"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#7E6BAA;--plum-dark:#5A4890;--plum-mid:#6C8EBF;
+  --lav:#F7F7FB;--lav-mid:#EEEEF8;--lav-dark:#E0E0F0;
+  --mint:#C8EDE0;--teal:#3A9E7A;--teal-dark:#1A5C45;
+  --white:#FFFFFF;--charcoal:#333333;--char-mid:#555555;--char-light:#888888;
+  --fd:'Cormorant Garamond',serif;--fb:'Sarabun',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--lav);color:var(--charcoal);overflow-x:hidden;line-height:1.8;font-size:17px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;background:rgba(90,72,144,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,237,224,0.2)}
+.nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:600;color:var(--mint);letter-spacing:.05em;white-space:nowrap}
+.nav-cta{background:var(--mint);color:var(--teal-dark);padding:7px 14px;border-radius:4px;font-size:.8rem;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;cursor:pointer}
+.hero{min-height:100vh;background:var(--plum);display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-inner{max-width:760px;text-align:center;position:relative;z-index:2;animation:fadeUp .8s ease both}
+.hero h1{font-family:var(--fd);font-size:clamp(1.8rem,5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.25;margin-bottom:20px}
+.hero h1 span{color:var(--mint);font-style:italic}
+.btn-primary{display:inline-block;background:var(--mint);color:var(--teal-dark);padding:15px 36px;border-radius:6px;font-size:1rem;font-weight:700;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.pain{background:var(--plum);padding:80px 24px}
+.container-sm{max-width:680px;margin:0 auto}
+h2{font-size:clamp(1.4rem,4vw,2.6rem);color:var(--plum-dark);margin-bottom:24px}
+.d{color:var(--white)}
+.capture{background:var(--lav-dark);padding:80px 24px;border-top:3px solid var(--teal)}
+.founder{background:var(--plum-dark);padding:80px 24px;color:white}
+.days{padding:80px 24px;background:var(--lav)}
+.days-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.day-card{background:var(--white);padding:20px;border-radius:10px;border:1px solid var(--lav-dark)}
+footer{background:var(--plum-dark);padding:24px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.28)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
 
 <nav>
   <span class="nav-logo">Heart Recode</span>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="nav-cta">รับ Day 1 Preview ฟรี</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform');" class="nav-cta">รับ Day 1 Preview ฟรี</a>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="hero-tag">RECODE ACADEMY · 7-DAY SYSTEM</span>
+    <span style="color:var(--mint);letter-spacing:.2em;font-size:.8rem;">RECODE ACADEMY · 7-DAY SYSTEM</span>
     <h1>คิดวนอยู่ในหัว?<br>เริ่มลงมือได้จริง <span>ใน 7 วัน</span></h1>
-    <p class="hero-sub">AI ผู้ช่วย + ระบบที่จัดระเบียบความคิด<br>ช่วยให้ตัดสินใจได้คม ใน 15 นาทีต่อวัน</p>
-    <ul class="hero-bullets">
-      <li>วันละ 15 นาที → ได้คำตอบที่ใช้ต่อได้จริง</li>
-      <li>ไม่ต้องเตรียมอะไรล่วงหน้า</li>
-      <li>กลับมาหยิบใช้ซ้ำได้ตลอด</li>
-    </ul>
+    <p style="color:white;margin-bottom:30px;">AI ผู้ช่วย + ระบบที่จัดระเบียบความคิด ช่วยให้ตัดสินใจได้คม ใน 15 นาทีต่อวัน</p>
     <div class="hero-btns">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary">รับ Day 1 Preview ฟรี →</a>
-      <a href="#days" class="btn-secondary" onclick="document.getElementById('days').scrollIntoView({behavior:'smooth'});return false;">ดูโครง 7 วัน ↓</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform');" class="btn-primary">รับ Day 1 Preview ฟรี →</a>
     </div>
-    <p class="hero-reassurance">กรอก email · รับลิงก์ทันที · ไม่ต้องเตรียมอะไร</p>
   </div>
 </section>
 
 <section class="pain">
-  <div class="container-sm fade-in">
-    <span class="slabel d">คุณกำลังเจอแบบนี้ไหม</span>
+  <div class="container-sm">
     <h2 class="d">ถ้าคุณกำลังเจอแบบนี้…</h2>
-    <p class="pain-intro">คนรับผิดชอบสูงจำนวนมากเจออาการเดิม ๆ ทุกวัน</p>
-    <ul class="pain-list">
-      <li>งานยังไม่เริ่ม เพราะคิดวนอยู่ในหัว</li>
-      <li>ตัดสินใจเรื่องเดิมซ้ำ ๆ ทั้งที่ผ่านมาแล้ว</li>
-      <li>Decision Fatigue — เหนื่อยล้าจากการตัดสินใจทั้งวัน จนถึงเรื่องสำคัญกลับคิดไม่ออก หรือตัดสินใจผิดพลาดทั้งที่รู้ว่าควรทำอะไร</li>
-      <li>เริ่มงานใหม่ไม่ออก เพราะหัวยังค้างอยู่กับงานก่อนหน้า — ทั้งวันผ่านไปกับการ "พยายามจะเริ่ม" แต่ไม่ได้เริ่มจริงสักที</li>
-      <li>พักแล้ว แต่สมองยังไม่หยุด</li>
+    <ul style="color:white;list-style:none;">
+      <li>— งานยังไม่เริ่ม เพราะคิดวนอยู่ในหัว</li>
+      <li>— Decision Fatigue เหนื่อยล้าจากการตัดสินใจ</li>
+      <li>— พักแล้ว แต่สมองยังไม่หยุด</li>
     </ul>
-    <p class="pain-close">ระบบนี้ถูกออกแบบมาเพื่อคุณ</p>
   </div>
 </section>
 
-<section class="capture" id="capture">
-  <div class="container-sm fade-in">
-    <span class="slabel">เริ่มต้นฟรี</span>
-    <h2>Day 1 Preview — ทดลองระบบก่อน ไม่มีเงื่อนไข</h2>
-    <p class="capture-body">ใส่ email เพื่อรับลิงก์ Day 1 Preview ทันที<br>สัมผัสประสบการณ์ "ปิด loop ในหัว" ด้วยความจริง 1 ประโยค</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" target="_blank" class="btn-primary on-white" style="display:inline-block;text-decoration:none;">กรอก email รับ Day 1 Preview ฟรี →</a>
-    <p class="capture-note">ตอบ 2 ข้อ รับลิงก์ทาง email ทันที · ไม่มีข้อผูกมัด</p>
-  </div>
-</section>
-
-<section class="problem">
-  <div class="container-sm fade-in">
-    <span class="slabel">มุมมองใหม่</span>
-    <div class="divider"></div>
-    <h2>ถ้าสมองทำงานหนักอยู่แล้ว<br>ปัญหามักเป็น "ระบบ" ไม่ใช่ "ตัวคุณ"</h2>
-    <ul class="problem-list">
-      <li>ความคิดวนลูป แม้งานจะจบแล้ว</li>
-      <li>Decision Fatigue — เหนื่อยล้าจากการตัดสินใจทั้งวัน จนถึงเรื่องสำคัญกลับตัดสินใจไม่ออก</li>
-      <li>Invisible Labor — งานที่มองไม่เห็น เช่น การนั่งจัดระเบียบความคิดในหัว ที่กินพลังงานมากกว่าตัวงานจริง</li>
-      <li>ข้อมูลเยอะ จนตัดสินใจช้า เสียเวลาและโอกาสสำคัญ</li>
-    </ul>
-    <div class="problem-solution">
-      Heart Recode จัดเป็นขั้นตอน เพื่อคืนความชัด — ใช้เวลา 15 นาทีต่อวัน และจบแต่ละวันด้วยสิ่งที่จับต้องได้ ทั้งความชัดในใจ ทิศทางที่ตัดสินใจแล้ว และงานที่พร้อมใช้ทันที
-    </div>
-  </div>
-</section>
-
-<section class="founder">
-  <div class="container-sm fade-in">
-    <span class="slabel d">ผู้สร้างระบบนี้</span>
-    <div class="divider"></div>
-    <h2 class="d">ทำไมต้องเป็น Heart Recode?</h2>
-    <div class="founder-card">
-      <div class="founder-text">
-        <p>ก่อนจะมีระบบนี้... น้ำหวานเองก็คือคนที่ทำงานไม่เคยหยุด</p>
-        <p>ในฐานะผู้จัดการที่ต้องรับผิดชอบทั้งตัวเอง ทีม และบริษัท พร้อมกับบทบาท "แม่" ที่ต้องดูแลลูก และ "ลูก" ที่ต้องดูแลแม่ที่แก่ลงทุกวัน — สองหน้าที่นี้ไม่มีวันหยุด ไม่มีโอที และที่สำคัญ ไม่มีใครแทนเราได้</p>
-        <p>บ่อยครั้งที่งานจบ แต่ใจไม่จบ ยังวนกลับไปตรวจซ้ำ เพราะกลัวพลาด ทั้งที่ดูไปแล้วหลายรอบ — <strong>คิดวนจนสมองล้าโดยไม่รู้ตัว</strong></p>
-        <p>ช่วงหนึ่งเริ่มรู้สึกว่า น่าจะมีวิธีที่ทำให้คิดน้อยลง แต่ได้ผลมากขึ้น เลยลองหลายเครื่องมือ หลายวิธี บางอย่างช่วยเบาแรงลง บางอย่างกลับทำให้ต้องคิดเพิ่ม</p>
-        <p>จนได้ใช้ AI อย่างจริงจัง แล้วเห็นชัดว่า ถ้ามี <strong>"ระบบที่ใช่"</strong> มันช่วยจัดความคิดให้เป็นระเบียบ ตัดสินใจได้คมขึ้น และปิดงานแต่ละวันได้ชัดแบบไม่ค้างคาในหัว</p>
-        <p>Heart Recode ไม่ได้สร้างขึ้นเพื่อสอน แต่สร้างขึ้นเพราะน้ำหวานต้องการใช้เอง และเมื่อมันได้ผลจริง จึงอยากส่งต่อระบบนี้ให้คุณ</p>
-      </div>
-      <div class="founder-sig">
-        <p class="founder-name">น้ำหวาน</p>
-        <p class="founder-title">ผู้สร้าง Heart Recode · ประสบการณ์กว่า 20 ปี สายการตลาด การขาย และการจัดการองค์กร</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="promise">
-  <div class="container fade-in">
-    <span class="slabel">สิ่งที่คุณจะได้</span>
-    <div class="divider"></div>
-    <h2>ไม่ใช่แค่เครื่องมือ<br>แต่คือระบบที่พาออกจากความคิดที่ติดอยู่</h2>
-    <p class="promise-intro">ภายใน 7 วัน แต่ละวันจะค่อย ๆ เปลี่ยนสิ่งนี้:</p>
-    <ul class="transform-list">
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากความคิดที่วนในหัว → กลายเป็น "ประโยคเดียวที่ชัด" และจบมันได้</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากความรู้สึกหนักและกดดัน → เหลือแค่ "สิ่งเดียวที่ต้องโฟกัสตอนนี้"</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากความสับสนว่าจะเริ่มตรงไหน → เหลือ "ทิศเดียว" ที่ไปแล้วงานไหล</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากงานที่คิดไม่จบ → กลายเป็น "คำตอบที่เปิดใช้ได้ทันที"</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากการตัดสินใจที่ใช้พลัง → กลายเป็น "กติกาที่ช่วยให้เลือกง่ายขึ้น"</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากภาพในหัวที่กระจัดกระจาย → กลายเป็น "ภาพเดียวที่ชัดและใช้สื่อสารได้"</span></li>
-      <li class="transform-item"><span class="transform-arrow">✦</span><span>จากการเริ่มใหม่ทุกครั้ง → กลายเป็น "ระบบ 21 วันที่ใช้ต่อได้เอง"</span></li>
-    </ul>
-    <div class="promise-close">สิ่งที่เปลี่ยนจริง ไม่ใช่ปริมาณงาน<br>แต่คือ "ความคมในการคิด และการตัดสินใจ"</div>
-    <p class="micro-proof">✦ หลายคนเริ่มเห็นความเปลี่ยนตั้งแต่ Day 1 เพราะแค่ "ปิด loop ในหัวได้" พลังงานก็กลับมา</p>
-    <div class="who-block">
-      <p>เหมาะกับคนที่:</p>
-      <ul>
-        <li>คิดเก่ง แต่คิดไม่จบ</li>
-        <li>งานเยอะ แต่ไม่รู้ว่าอะไรควรทำก่อน</li>
-        <li>รู้ว่าต้องทำอะไร แต่เริ่มไม่ได้สักที</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="diff">
-  <div class="container fade-in">
-    <span class="slabel">ความแตกต่าง</span>
-    <div class="divider"></div>
-    <h2>คอร์สนี้ไม่ได้ให้แค่คำตอบ<br>แต่ให้ "ระบบที่พาไปจนจบ"</h2>
-    <div class="diff-grid">
-      <div class="diff-card">
-        <h3>ไม่ใช่แค่คิดได้ แต่ "พาให้จบ"</h3>
-        <p>ไม่หยุดที่ insight แต่พาไปถึง next action ที่ทำได้จริง ภายใน 15 นาที</p>
-      </div>
-      <div class="diff-card">
-        <h3>คิดเป็นลำดับ ไม่ต้องแบกทั้งก้อน</h3>
-        <p>ทุกวันมี "คำถามเดียว" ที่ช่วยตัด noise ออก เหลือแค่สิ่งที่สำคัญจริง</p>
-      </div>
-      <div class="diff-card">
-        <h3>ไม่ต้องเก่ง prompt ก็ใช้ได้</h3>
-        <p>ระบบจัดโครงให้แล้ว คุยตาม flow ก็ได้คำตอบที่ต่อยอดงานได้ทันที ไม่ใช่แค่คำตอบสวย ๆ</p>
-      </div>
-      <div class="diff-card">
-        <h3>ไม่ได้ช่วยให้คิดเยอะขึ้น แต่ช่วยให้ "คิดจบเป็นเรื่อง ๆ"</h3>
-        <p>ลด loop ในหัว แล้วเปลี่ยนเป็นคำตอบที่ใช้ได้จริง</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="how">
-  <div class="container-sm fade-in">
-    <span class="slabel d">วิธีใช้งาน</span>
-    <h2 class="d">ทำงานกับคอร์สนี้ใน 3 ขั้น</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>เริ่มจากภาพรวมสั้น ๆ</h3>
-          <p>เข้าใจสิ่งที่ต้องโฟกัสของวันนี้ โดยไม่ต้องเตรียมอะไรเพิ่ม</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>ตอบคำถามทีละข้อในแชท</h3>
-          <p>ระบบจะพาไปทีละก้าว ช่วยจัดความคิดให้ชัด โดยไม่ต้องคิดเองทั้งหมด</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>จบวันด้วยผลลัพธ์ที่ใช้ได้ทันที 1 อย่าง</h3>
-          <p>วันละ 1 อย่างพอ — แต่เป็นของจริงที่หยิบไปใช้ต่อได้ทันที</p>
-        </div>
-      </div>
-    </div>
-    <div class="how-note">วันละ 15 นาที — ได้คำตอบที่ตัดสินใจได้ทันที และเครื่องมือครบ 7 ชิ้น ที่ใช้ได้ตลอดค่ะ</div>
+<section class="capture">
+  <div class="container-sm">
+    <h2>Day 1 Preview — ทดลองระบบฟรี</h2>
+    <p>สัมผัสประสบการณ์ "ปิด loop ในหัว" ทันที</p><br>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform" onclick="return gtag_report_conversion('https://docs.google.com/forms/d/e/1FAIpQLSfnUcXFRi5DvGL6D2IAeo3DiKV0Rk7PdpdEy4xYS5EtlD70hQ/viewform');" class="btn-primary" style="background:var(--teal);color:white;">กรอก email รับ Day 1 Preview ฟรี →</a>
   </div>
 </section>
 
 <section class="days" id="days">
-  <div class="container fade-in">
-    <span class="slabel">โครงสร้างคอร์ส</span>
-    <div class="divider"></div>
-    <h2>7 วัน = 7 เครื่องมือที่ใช้ได้ทันที<br>และหยิบกลับมาใช้ได้เสมอ</h2>
-    <p class="days-intro">เพราะปัญหาเดิม ๆ ไม่ได้หายไป — แต่คุณจะจัดการมันได้ทุกครั้ง</p>
+  <div class="container">
+    <h2>7 วัน = 7 เครื่องมือที่ใช้ได้ทันที</h2>
     <div class="days-grid">
-      <div class="day-card"><div class="day-num">Day 1</div><div class="day-icon">🐚</div><h3>หอยสังข์ฟังเสียงจากใจ</h3><p>ได้ 1 ประโยคที่ช่วยปิดความคิดที่วนอยู่ในหัว</p></div>
-      <div class="day-card"><div class="day-num">Day 2</div><div class="day-icon" style="font-size:1.5rem;">✨</div><h3>คันฉ่องส่องใจ</h3><p>เห็นสิ่งที่กดอยู่ชัด และลดแรงกดในหัวลงได้ทันที</p></div>
-      <div class="day-card"><div class="day-num">Day 3</div><div class="day-icon">🧭</div><h3>เข็มทิศวิเศษ</h3><p>เลือก "เรื่องเดียวที่ต้องทำวันนี้" และเริ่มได้ทันที</p></div>
-      <div class="day-card"><div class="day-num">Day 4</div><div class="day-icon">🚩</div><h3>ธงทอง 3F</h3><p>เปลี่ยนงานยาก ให้กลายเป็นคำตอบที่ใช้ได้ทันที</p></div>
-      <div class="day-card"><div class="day-num">Day 5</div><div class="day-icon">📜</div><h3>เหล็กจาร + ใบลาน</h3><p>ตัดสินใจได้ — ด้วยกติกาของตัวเอง</p></div>
-      <div class="day-card"><div class="day-num">Day 6</div><div class="day-icon">🎨</div><h3>พู่กันทิพย์</h3><p>สร้างภาพด้วย AI พร้อมสูตรสั่งภาพ 5 องค์ประกอบ ใช้ได้กับ AI ทุกตัว</p></div>
-      <div class="day-card"><div class="day-num">Day 7</div><div class="day-icon" style="font-size:1.5rem;">🌟</div><h3>บันไดวิเศษ 21 ขั้น</h3><p>ได้แผน 21 วันที่จัดลำดับชัด และใช้ต่อได้จริงในชีวิต</p></div>
+      <div class="day-card"><h3>Day 1</h3><p>หอยสังข์ฟังเสียงจากใจ: ปิดความคิดวนลูป</p></div>
+      <div class="day-card"><h3>Day 2</h3><p>คันฉ่องส่องใจ: ลดแรงกดในหัว</p></div>
+      <div class="day-card"><h3>Day 3</h3><p>เข็มทิศวิเศษ: เลือกเรื่องเดียวที่ต้องทำ</p></div>
+      <div class="day-card"><h3>Day 4</h3><p>ธงทอง 3F: เปลี่ยนงานยากเป็นคำตอบ</p></div>
+      <div class="day-card"><h3>Day 5</h3><p>เหล็กจาร + ใบลาน: กติกาตัดสินใจ</p></div>
+      <div class="day-card"><h3>Day 6</h3><p>พู่กันทิพย์: สร้างภาพด้วย AI</p></div>
+      <div class="day-card"><h3>Day 7</h3><p>บันไดวิเศษ 21 ขั้น: แผนที่ใช้ต่อได้จริง</p></div>
     </div>
-  </div>
-</section>
-
-<section class="proof">
-  <div class="container fade-in">
-    <span class="slabel d">เสียงจากคนที่ลองใช้จริง</span>
-    <div class="divider"></div>
-    <h2 class="d">จากความคิดที่ค้าง → เป็นขั้นตอนที่เริ่มได้ทันที</h2>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="proof-insight">"จากความคิดที่ค้าง → เหลือขั้นตอนที่เริ่มได้ทันที"</div>
-        <p class="proof-quote">งานจัดซื้อมีทั้งเอกสารและเดดไลน์ที่ชนกันตลอด พอใช้ระบบนี้ ความคิดที่เคยกระจัดกระจาย ถูกเรียบเป็นลำดับ ทำให้เริ่มงานได้ทันทีโดยไม่ต้องลังเล</p>
-        <p class="proof-name">ชัชสรัญ เอี่ยมละออ</p>
-        <p class="proof-title">เจ้าหน้าที่จัดซื้ออาวุโส — รพ.รามาธิบดี</p>
-      </div>
-      <div class="proof-card">
-        <div class="proof-insight">"เห็นโครงแล้วรู้เลยว่าเอาไปใช้กับ AI ได้จริง"</div>
-        <p class="proof-quote">สิ่งที่เห็นคือมีการวางโครงชัด โดยเฉพาะ 3F ที่ช่วยให้การสื่อสารกับ AI ไม่หลุดประเด็น ทำให้ผลลัพธ์ที่ได้นำไปใช้ต่อในงานได้จริง</p>
-        <p class="proof-name">บุญวิทย์ เอกประทุมชัย</p>
-        <p class="proof-title">IT Manager — Samsonite Thailand</p>
-      </div>
-      <div class="proof-card">
-        <div class="proof-insight">"โครงแบบนี้ ใช้กับงานจริงได้เลย"</div>
-        <p class="proof-quote">มีการวางโครงที่ชัด สามารถนำไปใช้กับการทำงานได้ทันที เป็นแนวทางที่ช่วยให้เรียบงานออกมาเป็นขั้นตอน โดยไม่ต้องเริ่มคิดใหม่ทุกครั้ง</p>
-        <p class="proof-name">ปัทมา วิเลเลิศ</p>
-        <p class="proof-title">Project Manager</p>
-      </div>
-    </div>
-    <div class="proof-grid-full">
-      <div class="proof-card" style="background:rgba(255,255,255,.1);border-color:rgba(200,237,224,.25)">
-        <div class="proof-insight">"เริ่มจากลองใช้เป็นชิ้นเล็ก แล้วตัดสินใจใช้ทั้งระบบ"</div>
-        <p class="proof-quote">งานบันทึกเสียงต้องจัดคิวนักพากย์หลายคน มีหลายภาษา และมีการแก้ไขตลอด ก่อนหน้านี้ต้องคุมทุกอย่างไว้ในหัว ทำให้จัดลำดับยาก พอได้ลองใช้ เริ่มเห็นว่าความคิดสามารถเรียบออกมาเป็นขั้นตอนได้ เลยตัดสินใจใช้คอร์สเต็มเพื่อจัดการงานทั้งระบบ</p>
-        <p class="proof-name">วีรภัทร พิมพ์ทองฉัตร</p>
-        <p class="proof-title">Sound Recorder — ช่อมะกอกสตูดิโอ</p>
-      </div>
-    </div>
-    <p class="proof-closing">ทุกคนไม่ได้ใช้เวลามากขึ้น แต่ใช้ <strong>"15 นาที" ได้คุ้มขึ้น</strong></p>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Recode Academy · LINE: <a href="https://line.me/R/ti/p/@recodeacademy">@recodeacademy</a></p>
+  <p>© 2026 Recode Academy · LINE: @recodeacademy</p>
 </footer>
-
-<script>
-  // Script for Fade In effect
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      appearOnScroll.unobserve(entry.target);
-    });
-  }, appearOptions);
-  faders.forEach(fader => appearOnScroll.observe(fader));
-</script>
 
 </body>
 </html>
