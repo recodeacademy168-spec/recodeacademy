@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17764598682"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17764598682');</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สร้างภาพสินค้าด้วย AI — ไม่ต้องเก่ง Prompt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#7E6BAA;--plum-dark:#5A4890;
+  --teal:#3A9E7A;--mint:#C8EDE0;--mint-dark:#A8DCC8;
+  --lav:#F7F7FB;--lav-mid:#EEEEF8;--lav-dark:#E0E0F0;
+  --white:#FFFFFF;--charcoal:#333333;--char-mid:#555555;--char-light:#888888;
+  --fb:'Sarabun',sans-serif;--fd:'Cormorant Garamond',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--fb);background:var(--lav);color:var(--charcoal);font-size:17px;line-height:1.75;min-height:100vh}
+
+.header{background:var(--plum-dark);padding:20px 24px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40%;left:-10%;width:60%;height:150%;background:radial-gradient(ellipse,rgba(200,237,224,.1) 0%,transparent 70%);pointer-events:none}
+.header-brand{font-size:.72rem;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px}
+.header h1{font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:4px;line-height:1.4}
+.header h1 span{font-family:var(--fd);font-style:italic;color:var(--mint)}
+.header-sub{font-size:.85rem;color:rgba(255,255,255,.55);font-weight:300}
+
+.main{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+
+.card{background:var(--white);border:1px solid var(--lav-dark);border-radius:12px;padding:24px;margin-bottom:16px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.step-label{font-size:.72rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.step-title{font-size:1.1rem;font-weight:700;color:var(--plum-dark);margin-bottom:6px;line-height:1.4}
+.step-desc{font-size:.88rem;color:var(--char-mid);margin-bottom:18px;line-height:1.7}
+
+.progress-bar{display:flex;gap:0;margin-bottom:28px;border-radius:8px;overflow:hidden;border:1px solid var(--lav-dark)}
+.progress-step{flex:1;padding:10px 6px;text-align:center;font-size:.75rem;font-weight:600;color:var(--char-light);background:var(--white);transition:all .3s}
+.progress-step.active{background:var(--plum);color:var(--white)}
+.progress-step.done{background:var(--teal);color:var(--white)}
+
+input[type=text],textarea{width:100%;padding:13px 16px;border:1.5px solid var(--lav-dark);border-radius:8px;font-size:1rem;font-family:var(--fb);color:var(--charcoal);background:var(--lav);outline:none;transition:border-color .2s;line-height:1.7}
+input[type=text]:focus,textarea:focus{border-color:var(--plum);background:var(--white)}
+input[type=text]::placeholder,textarea::placeholder{color:var(--char-light);font-weight:300}
+textarea{resize:vertical;min-height:80px}
+
+.chip-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{padding:8px 16px;border:1.5px solid var(--lav-dark);border-radius:20px;font-size:.88rem;cursor:pointer;transition:all .2s;background:var(--white);font-family:var(--fb);color:var(--char-mid)}
+.chip:hover{border-color:var(--plum);color:var(--plum)}
+.chip.selected{background:var(--plum);color:var(--white);border-color:var(--plum)}
+
+.field-label{font-size:.82rem;font-weight:600;color:var(--plum-dark);margin-bottom:8px;display:block}
+.field-group{margin-bottom:18px}
+
+.btn-primary{background:var(--mint);color:var(--teal);border:none;padding:13px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--fb);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--mint-dark);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--char-mid);border:1px solid var(--lav-dark);padding:11px 22px;border-radius:8px;font-size:.9rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.btn-secondary:hover{border-color:var(--plum);color:var(--plum)}
+
+.ai-loading{display:flex;align-items:center;gap:10px;color:var(--char-mid);font-size:.9rem;padding:16px 0}
+.dots{display:flex;gap:4px}
+.dot{width:6px;height:6px;background:var(--plum);border-radius:50%;animation:bounce .9s infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}
+
+.output-box{background:var(--plum-dark);border-radius:10px;padding:20px;margin-bottom:14px;position:relative}
+.output-label{font-size:.7rem;letter-spacing:.15em;color:var(--mint);font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.output-text{font-size:.92rem;color:rgba(255,255,255,.9);line-height:1.85;white-space:pre-wrap;font-family:var(--fb)}
+.copy-btn{position:absolute;top:14px;right:14px;background:rgba(200,237,224,.15);border:1px solid rgba(200,237,224,.3);color:var(--mint);padding:5px 12px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.copy-btn:hover{background:rgba(200,237,224,.25)}
+.copy-btn.copied{background:var(--teal);color:var(--white);border-color:var(--teal)}
+
+.ai-list{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.ai-badge{padding:6px 14px;background:var(--lav-mid);border:1px solid var(--lav-dark);border-radius:6px;font-size:.8rem;color:var(--char-mid);font-weight:500}
+
+.done-banner{background:var(--teal);color:var(--white);border-radius:10px;padding:14px 20px;text-align:center;margin-bottom:16px;font-weight:600}
+.action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+.tip-box{background:var(--lav-mid);border-left:3px solid var(--teal);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:14px;font-size:.85rem;color:var(--char-mid);line-height:1.7}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--plum);color:var(--white);padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:500;transition:transform .3s;z-index:999;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+.footer{text-align:center;padding:16px;font-size:.78rem;color:var(--char-light);border-top:1px solid var(--lav-dark)}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:480px){
+  .main{padding:20px 14px 40px}
+  .card{padding:18px}
+  .btn-primary{width:100%;justify-content:center}
+}
+
+/* ── UPGRADED DRAMATIC HEADER ── */
+.header{
+  background:var(--plum-dark,#3D2B4F);
+  padding:0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.header-inner{position:relative;z-index:3;padding:36px 24px 32px}
+
+/* Aurora blobs */
+.header-aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hau1{position:absolute;width:600px;height:500px;background:radial-gradient(circle,rgba(58,158,122,.45) 0%,transparent 65%);top:-30%;right:-10%;border-radius:50%;filter:blur(55px);animation:hDrift 14s ease-in-out infinite}
+.hau2{position:absolute;width:500px;height:420px;background:radial-gradient(circle,rgba(126,107,170,.5) 0%,transparent 65%);bottom:-20%;left:-8%;border-radius:50%;filter:blur(55px);animation:hDrift 18s ease-in-out infinite;animation-delay:-7s}
+.hau3{position:absolute;width:300px;height:280px;background:radial-gradient(circle,rgba(200,237,224,.2) 0%,transparent 65%);top:10%;left:35%;border-radius:50%;filter:blur(60px);animation:hDrift 10s ease-in-out infinite;animation-delay:-3s}
+@keyframes hDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(35px,-25px) scale(1.1)}66%{transform:translate(-25px,35px) scale(.92)}}
+
+/* Grid */
+.header-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,237,224,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(200,237,224,.1) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:1;mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 30%,transparent 100%)}
+
+/* Particles */
+.header-particles{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.hparticle{position:absolute;border-radius:50%;background:var(--mint,#C8EDE0);opacity:0;animation:hFloat linear infinite;box-shadow:0 0 8px 2px rgba(200,237,224,.5)}
+@keyframes hFloat{0%{transform:translateY(100%) translateX(0);opacity:0}15%{opacity:.7}85%{opacity:.3}100%{transform:translateY(-80px) translateX(30px);opacity:0}}
+
+/* Text styles */
+.header-brand{font-size:.68rem;letter-spacing:.25em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:10px;display:block}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px}
+.header h1 span{color:var(--mint,#C8EDE0);font-family:var(--fd,serif);font-style:italic}
+.header-sub,.header-tagline{font-size:.9rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.6;max-width:500px;margin:0 auto}
+
+/* Header tag badge */
+.header-tag{display:inline-block;border:1px solid rgba(200,237,224,.3);color:var(--mint,#C8EDE0);font-size:.65rem;letter-spacing:.18em;padding:4px 14px;border-radius:2px;margin-bottom:14px;font-weight:600;text-transform:uppercase;animation:hTagPulse 3s ease infinite}
+@keyframes hTagPulse{0%,100%{border-color:rgba(200,237,224,.3);box-shadow:none}50%{border-color:rgba(200,237,224,.7);box-shadow:0 0 12px rgba(200,237,224,.2)}}
+
+/* Stats row under header */
+.header-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.header-stat{background:rgba(255,255,255,.09);backdrop-filter:blur(12px);border:1px solid rgba(200,237,224,.2);border-radius:8px;padding:8px 18px;font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:.06em}
+.header-stat strong{color:var(--mint,#C8EDE0);font-size:1rem;display:block;line-height:1.2}
+
+/* ── UPGRADED CARD & UI STYLES ── */
+.card{
+  background:var(--white);
+  border:1px solid var(--lav-dark,#E0E0F0);
+  border-radius:14px;
+  padding:28px;
+  margin-bottom:18px;
+  animation:fadeUp .5s cubic-bezier(.22,1,.36,1) both;
+  box-shadow:0 2px 16px rgba(90,72,144,.06);
+  transition:box-shadow .3s,border-color .3s;
+}
+.card:hover{box-shadow:0 6px 28px rgba(90,72,144,.11);border-color:rgba(90,72,144,.18)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Progress bar upgraded */
+.progress-bar{display:flex;gap:0;margin-bottom:28px;border-radius:10px;overflow:hidden;border:none;box-shadow:0 2px 12px rgba(90,72,144,.1)}
+.progress-step{flex:1;padding:11px 6px;text-align:center;font-size:.76rem;font-weight:600;color:var(--char-light,#888);background:#fff;transition:all .3s;letter-spacing:.04em;border-right:1px solid rgba(90,72,144,.08)}
+.progress-step:last-child{border-right:none}
+.progress-step.active{background:linear-gradient(135deg,var(--plum,#7E6BAA),var(--plum-dark,#5A4890));color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.progress-step.done{background:linear-gradient(135deg,var(--teal,#3A9E7A),#2A8060);color:#fff}
+
+/* Buttons upgraded */
+.btn-primary{
+  background:linear-gradient(135deg,var(--mint,#C8EDE0),var(--mint-dark,#A8DCC8));
+  color:var(--teal,#3A9E7A);
+  border:none;
+  padding:14px 30px;
+  border-radius:10px;
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+  font-family:var(--fb);
+  transition:all .25s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 4px 16px rgba(58,158,122,.2);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(58,158,122,.3)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+.step-label{
+  font-size:.7rem;letter-spacing:.2em;
+  color:var(--teal,#3A9E7A);font-weight:700;
+  text-transform:uppercase;margin-bottom:6px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.step-label::before{content:'';display:inline-block;width:18px;height:2px;background:var(--teal,#3A9E7A);border-radius:2px}
+
+/* Result/output box */
+.result-box, .output-box, .prompt-output{
+  background:linear-gradient(135deg,var(--plum-dark,#5A4890),#3D2B4F);
+  border:1px solid rgba(200,237,224,.2);
+  border-radius:12px;
+  padding:24px;
+  color:rgba(255,255,255,.9);
+  position:relative;
+  overflow:hidden;
+}
+.result-box::before,.output-box::before,.prompt-output::before{
+  content:'';position:absolute;top:-30%;right:-10%;
+  width:250px;height:250px;
+  background:radial-gradient(circle,rgba(58,158,122,.25),transparent);
+  border-radius:50%;filter:blur(40px);pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-aurora">
+    <div class="hau1"></div>
+    <div class="hau2"></div>
+    <div class="hau3"></div>
+  </div>
+  <div class="header-grid"></div>
+  <div class="header-particles"></div>
+  <div class="header-inner">
+    <span class="header-tag">RECODE ACADEMY · AI TOOL</span>
+    <p class="header-brand">Heart Recode · Recode Academy</p>
+    <h1>สร้างภาพสินค้าด้วย AI<br><span>ไม่ต้องเก่ง Prompt</span></h1>
+    <p class="header-sub">บอกแค่ว่าอยากได้ภาพแบบไหน — ระบบสร้าง Prompt ให้ทันที</p>
+    <div class="header-stats">
+      <div class="header-stat"><strong>3</strong> สไตล์</div>
+      <div class="header-stat"><strong>30 วิ</strong> ได้ Prompt</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="progress-bar">
+    <div class="progress-step active" id="p1">สินค้า</div>
+    <div class="progress-step" id="p2">สไตล์</div>
+    <div class="progress-step" id="p3">รายละเอียด</div>
+    <div class="progress-step" id="p4">Prompt</div>
+  </div>
+
+  <!-- STEP 1: ประเภทสินค้า -->
+  <div id="step1" class="card">
+    <p class="step-label">ขั้นที่ 1</p>
+    <p class="step-title">สินค้าหรือบริการของคุณคืออะไรคะ?</p>
+    <p class="step-desc">บอกชื่อสินค้า และเลือกประเภทที่ตรงที่สุดค่ะ</p>
+    <div class="field-group">
+      <label class="field-label">ชื่อหรือคำอธิบายสินค้า</label>
+      <input type="text" id="product" placeholder="เช่น ครีมบำรุงผิว / กระเป๋าหนัง / ขนมไทย / คอร์สออนไลน์">
+    </div>
+    <div class="field-group">
+      <label class="field-label">ประเภทภาพที่ต้องการ</label>
+      <div class="chip-group" id="type-chips">
+        <div class="chip" onclick="selectChip(this,'type')">📦 ภาพสินค้าเดี่ยว</div>
+        <div class="chip" onclick="selectChip(this,'type')">🛍️ ภาพสินค้า + บรรยากาศ</div>
+        <div class="chip" onclick="selectChip(this,'type')">📣 ภาพโฆษณา</div>
+        <div class="chip" onclick="selectChip(this,'type')">🎁 ภาพโปรโมชัน</div>
+        <div class="chip" onclick="selectChip(this,'type')">✨ ภาพ Lifestyle</div>
+        <div class="chip" onclick="selectChip(this,'type')">🖼️ ภาพพื้นหลัง</div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="goTo(2)">ไปต่อ →</button>
+  </div>
+
+  <!-- STEP 2: สไตล์ -->
+  <div id="step2" class="card" style="display:none">
+    <p class="step-label">ขั้นที่ 2</p>
+    <p class="step-title">อยากได้ภาพสไตล์ไหนคะ?</p>
+    <p class="step-desc">เลือกได้มากกว่า 1 อย่างค่ะ</p>
+    <div class="field-group">
+      <label class="field-label">โทนสี</label>
+      <div class="chip-group">
+        <div class="chip" onclick="selectChip(this,'color')">☀️ อบอุ่น สว่าง</div>
+        <div class="chip" onclick="selectChip(this,'color')">🌙 มืด ลึก</div>
+        <div class="chip" onclick="selectChip(this,'color')">🌿 ธรรมชาติ</div>
+        <div class="chip" onclick="selectChip(this,'color')">🤍 มินิมอล ขาว</div>
+        <div class="chip" onclick="selectChip(this,'color')">🌈 สดใส จัดจ้าน</div>
+        <div class="chip" onclick="selectChip(this,'color')">💜 พาสเทล นุ่ม</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">สไตล์ภาพ</label>
+      <div class="chip-group">
+        <div class="chip" onclick="selectChip(this,'style')">📷 Realistic ดูจริง</div>
+        <div class="chip" onclick="selectChip(this,'style')">🎬 Cinematic มีมิติ</div>
+        <div class="chip" onclick="selectChip(this,'style')">✏️ Illustration วาด</div>
+        <div class="chip" onclick="selectChip(this,'style')">💎 Luxury หรูหรา</div>
+        <div class="chip" onclick="selectChip(this,'style')">🌸 Soft Aesthetic</div>
+        <div class="chip" onclick="selectChip(this,'style')">⚡ Bold กราฟิก</div>
+      </div>
+    </div>
+    <div class="action-row" style="margin-top:0">
+      <button class="btn-primary" onclick="goTo(3)">ไปต่อ →</button>
+      <button class="btn-secondary" onclick="goTo(1)">← กลับ</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: รายละเอียดเพิ่มเติม -->
+  <div id="step3" class="card" style="display:none">
+    <p class="step-label">ขั้นที่ 3</p>
+    <p class="step-title">เพิ่มรายละเอียดนิดนึงค่ะ</p>
+    <p class="step-desc">ไม่ต้องละเอียดมาก บอกแค่สิ่งที่อยากได้หรืออยากหลีกเลี่ยงค่ะ</p>
+    <div class="field-group">
+      <label class="field-label">อยากให้มีอะไรในภาพ? (ไม่บังคับ)</label>
+      <input type="text" id="include" placeholder="เช่น ดอกไม้ / แสงธรรมชาติ / โต๊ะไม้ / หิมะ">
+    </div>
+    <div class="field-group">
+      <label class="field-label">ขนาดภาพที่ต้องการ</label>
+      <div class="chip-group">
+        <div class="chip" onclick="selectChip(this,'ratio')">📱 9:16 (Stories)</div>
+        <div class="chip" onclick="selectChip(this,'ratio')">🖼️ 1:1 (Feed)</div>
+        <div class="chip" onclick="selectChip(this,'ratio')">🖥️ 16:9 (แนวนอน)</div>
+        <div class="chip" onclick="selectChip(this,'ratio')">📄 4:5 (Portrait)</div>
+      </div>
+    </div>
+    <div class="action-row" style="margin-top:0">
+      <button class="btn-primary" onclick="generatePrompt()">🎨 สร้าง Prompt →</button>
+      <button class="btn-secondary" onclick="goTo(2)">← กลับ</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: OUTPUT -->
+  <div id="step4" style="display:none">
+    <div class="done-banner">✨ Prompt พร้อมแล้วค่ะ — copy ไปใช้กับ AI ได้เลย</div>
+
+    <div class="card">
+      <div id="ai-loading" class="ai-loading">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <span>กำลังสร้าง Prompt...</span>
+      </div>
+
+      <div id="output-section" style="display:none">
+        <div class="output-box">
+          <p class="output-label">🎨 Canva / AI Image Prompt</p>
+          <button class="copy-btn" id="copy-main" onclick="copyOutput('prompt-out', this)">Copy</button>
+          <p class="output-text" id="prompt-out"></p>
+        </div>
+
+        <p class="step-label">ใช้ได้กับ AI ทุกตัวค่ะ</p>
+        <div class="ai-list">
+          <span class="ai-badge">Canva AI</span>
+          <span class="ai-badge">ChatGPT</span>
+          <span class="ai-badge">Gemini</span>
+          <span class="ai-badge">Midjourney</span>
+          <span class="ai-badge">Adobe Firefly</span>
+        </div>
+
+        <div class="tip-box">
+          💡 <strong>วิธีใช้ใน Canva:</strong> More → Canva AI → Image → วาง Prompt → เลือก Style → สร้างได้เลยค่ะ
+        </div>
+
+        <div class="action-row">
+          <button class="btn-primary" onclick="copyOutput('prompt-out', document.getElementById('copy-main'))">📋 Copy Prompt</button>
+          <button class="btn-primary" onclick="downloadPrompt()" style="background:var(--plum);color:var(--white)">⬇️ Download .txt</button>
+          <button class="btn-secondary" onclick="startOver()">สร้างใหม่</button>
+        </div>
+
+        <p style="font-size:.78rem;color:var(--char-light);margin-top:14px;text-align:center;font-style:italic">
+          Prompt นี้ใช้สูตร 5 องค์ประกอบ (Scene / Mood / Style / Lighting / Composition) ค่ะ
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>สร้างภาพสินค้าด้วย AI by <a href="index.html">Recode Academy</a></p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const selected = {type:'', color:'', style:'', ratio:''};
+
+function selectChip(el, group) {
+  document.querySelectorAll(`[onclick*="'${group}'"]`).forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selected[group] = el.textContent.trim();
+}
+
+function goTo(step) {
+  for(let i=1;i<=4;i++) {
+    const el = document.getElementById('step'+i);
+    if(el) el.style.display = i===step ? 'block' : 'none';
+  }
+  document.getElementById('step4').style.display = step===4 ? 'block' : 'none';
+  updateProgress(step);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function updateProgress(step) {
+  ['p1','p2','p3','p4'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'progress-step';
+    if(i+1 < step) el.classList.add('done');
+    else if(i+1 === step) el.classList.add('active');
+  });
+}
+
+async function generatePrompt() {
+  const product = document.getElementById('product').value.trim();
+  if (!product) { showToast('บอกชื่อสินค้าก่อนนะคะ 🎨'); goTo(1); return; }
+  if (!selected.type) { showToast('เลือกประเภทภาพก่อนนะคะ'); goTo(1); return; }
+
+  document.getElementById('step3').style.display = 'none';
+  document.getElementById('step4').style.display = 'block';
+  document.getElementById('ai-loading').style.display = 'flex';
+  document.getElementById('output-section').style.display = 'none';
+  updateProgress(4);
+
+  const include = document.getElementById('include').value.trim();
+  const ratio = selected.ratio || '1:1 (Feed)';
+
+  try {
+    const system = `คุณคือผู้เชี่ยวชาญด้านการสร้าง AI Image Prompt สำหรับภาพสินค้าและโฆษณา
+สร้าง prompt ภาษาอังกฤษที่ใช้ได้กับ Canva AI / ChatGPT / Midjourney / Gemini
+ใช้สูตร 5 องค์ประกอบ: Scene / Mood / Style / Lighting / Composition
+ต้องระบุ "No text, no letters, no logo, no watermark, no people" ทุกครั้ง
+ตอบเป็น prompt อย่างเดียว ไม่ต้องอธิบาย ไม่ต้องขึ้นต้นว่า "Here is" หรืออะไรทั้งนั้น`;
+
+    const userMsg = `สินค้า: ${product}
+ประเภทภาพ: ${selected.type}
+โทนสี: ${selected.color || 'warm natural'}
+สไตล์: ${selected.style || 'realistic'}
+ขนาด: ${ratio}
+${include ? 'ต้องมีในภาพ: ' + include : ''}
+
+สร้าง AI Image Prompt ภาษาอังกฤษ พร้อมใช้ได้ทันทีค่ะ`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 500,
+        system,
+        messages: [{role:'user', content: userMsg}]
+      })
+    });
+    const data = await res.json();
+    const prompt = data.content?.map(c=>c.text||'').join('').trim() || '';
+    document.getElementById('prompt-out').textContent = prompt;
+  } catch(e) {
+    const fallback = `Professional product photography of ${product}, ${selected.color||'warm'} color palette, ${selected.style||'realistic'} style, clean studio lighting, elegant composition, intentional negative space, ${ratio} format. No text, no letters, no logo, no watermark, no people.`;
+    document.getElementById('prompt-out').textContent = fallback;
+  }
+
+  document.getElementById('ai-loading').style.display = 'none';
+  document.getElementById('output-section').style.display = 'block';
+}
+
+function copyOutput(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    showToast('Copy แล้วค่ะ นำไปวางใน AI ได้เลย 🎨');
+  });
+}
+
+function downloadPrompt() {
+  const product = document.getElementById('product').value.trim();
+  const prompt = document.getElementById('prompt-out').textContent;
+  const content = `สร้างภาพสินค้าด้วย AI\nRecode Academy\n${'='.repeat(40)}\n\nสินค้า: ${product}\n\nAI Image Prompt:\n${prompt}\n\n${'='.repeat(40)}\nใช้ได้กับ: Canva AI / ChatGPT / Gemini / Midjourney / Adobe Firefly`;
+  const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href=url; a.download='AI_Prompt_'+Date.now()+'.txt';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Download แล้วค่ะ 🎨');
+}
+
+function startOver() {
+  Object.keys(selected).forEach(k => selected[k]='');
+  document.getElementById('product').value='';
+  document.getElementById('include').value='';
+  document.querySelectorAll('.chip.selected').forEach(c=>c.classList.remove('selected'));
+  goTo(1);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
