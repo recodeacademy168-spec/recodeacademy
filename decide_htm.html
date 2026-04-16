@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17764598682"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17764598682');</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตัดสินใจได้ — ด้วยกติกาของตัวเอง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#7E6BAA;--plum-dark:#5A4890;
+  --teal:#3A9E7A;--mint:#C8EDE0;--mint-dark:#A8DCC8;
+  --lav:#F7F7FB;--lav-mid:#EEEEF8;--lav-dark:#E0E0F0;
+  --white:#FFFFFF;--charcoal:#333333;--char-mid:#555555;--char-light:#888888;
+  --fb:'Sarabun',sans-serif;--fd:'Cormorant Garamond',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--fb);background:var(--lav);color:var(--charcoal);font-size:17px;line-height:1.75;min-height:100vh}
+
+.header{background:var(--plum-dark);padding:20px 24px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40%;left:-10%;width:60%;height:150%;background:radial-gradient(ellipse,rgba(200,237,224,.1) 0%,transparent 70%);pointer-events:none}
+.header-brand{font-size:.72rem;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px}
+.header h1{font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:4px;line-height:1.4}
+.header h1 span{font-family:var(--fd);font-style:italic;color:var(--mint)}
+.header-sub{font-size:.85rem;color:rgba(255,255,255,.55);font-weight:300}
+
+.main{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+
+.progress-bar{display:flex;gap:0;margin-bottom:28px;border-radius:8px;overflow:hidden;border:1px solid var(--lav-dark)}
+.progress-step{flex:1;padding:10px 6px;text-align:center;font-size:.75rem;font-weight:600;color:var(--char-light);background:var(--white);transition:all .3s;letter-spacing:.03em}
+.progress-step.active{background:var(--plum);color:var(--white)}
+.progress-step.done{background:var(--teal);color:var(--white)}
+
+.card{background:var(--white);border:1px solid var(--lav-dark);border-radius:12px;padding:24px;margin-bottom:16px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.step-label{font-size:.72rem;letter-spacing:.15em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.step-title{font-size:1.1rem;font-weight:700;color:var(--plum-dark);margin-bottom:6px;line-height:1.4}
+.step-desc{font-size:.88rem;color:var(--char-mid);margin-bottom:18px;line-height:1.7}
+
+textarea{width:100%;padding:14px 16px;border:1.5px solid var(--lav-dark);border-radius:8px;font-size:1rem;font-family:var(--fb);color:var(--charcoal);background:var(--lav);resize:vertical;outline:none;transition:border-color .2s;line-height:1.7;min-height:90px}
+textarea:focus{border-color:var(--plum);background:var(--white)}
+textarea::placeholder{color:var(--char-light);font-weight:300}
+
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.rule-card{padding:18px;border:2px solid var(--lav-dark);border-radius:10px;cursor:pointer;transition:all .2s;background:var(--lav)}
+.rule-card:hover{border-color:var(--purple, #9B8EC4);background:var(--lav-mid)}
+.rule-card.selected{border-color:var(--plum);background:var(--lav-mid)}
+.rule-card h3{font-size:.92rem;font-weight:700;color:var(--plum-dark);margin-bottom:6px}
+.rule-card p{font-size:.82rem;color:var(--char-mid);line-height:1.6}
+.rule-tag{display:inline-block;font-size:.68rem;letter-spacing:.12em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:8px;background:rgba(58,158,122,.1);padding:3px 10px;border-radius:20px}
+
+.btn-primary{background:var(--mint);color:var(--teal);border:none;padding:13px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--fb);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--mint-dark);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--char-mid);border:1px solid var(--lav-dark);padding:11px 22px;border-radius:8px;font-size:.9rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.btn-secondary:hover{border-color:var(--plum);color:var(--plum)}
+
+.ai-loading{display:flex;align-items:center;gap:10px;color:var(--char-mid);font-size:.9rem;padding:16px 0}
+.dots{display:flex;gap:4px}
+.dot{width:6px;height:6px;background:var(--plum);border-radius:50%;animation:bounce .9s infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}
+
+.output-main{background:var(--plum-dark);border-radius:10px;padding:22px;margin-bottom:14px;position:relative}
+.output-label{font-size:.7rem;letter-spacing:.15em;color:var(--mint);font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.output-text{font-size:1rem;color:rgba(255,255,255,.9);line-height:1.85;white-space:pre-wrap}
+.copy-btn{position:absolute;top:14px;right:14px;background:rgba(200,237,224,.15);border:1px solid rgba(200,237,224,.3);color:var(--mint);padding:5px 12px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.copy-btn:hover{background:rgba(200,237,224,.25)}
+.copy-btn.copied{background:var(--teal);color:var(--white);border-color:var(--teal)}
+
+.rewrite-grid{display:grid;gap:10px;margin-bottom:14px}
+.rewrite-card{background:var(--white);border:1px solid var(--lav-dark);border-radius:8px;padding:16px;transition:all .2s;cursor:pointer}
+.rewrite-card:hover{border-color:rgba(58,158,122,.3);box-shadow:0 2px 10px rgba(90,72,144,.06)}
+.rewrite-tone{font-size:.7rem;letter-spacing:.12em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.rewrite-text{font-size:.92rem;color:var(--charcoal);line-height:1.7}
+.rewrite-copy{font-size:.72rem;color:var(--char-light);margin-top:6px}
+
+.done-banner{background:var(--teal);color:var(--white);border-radius:10px;padding:14px 20px;text-align:center;margin-bottom:16px;font-weight:600}
+.action-row{display:flex;gap:10px;flex-wrap:wrap}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--plum);color:var(--white);padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:500;transition:transform .3s ease;z-index:999;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+.footer{text-align:center;padding:16px;font-size:.78rem;color:var(--char-light);border-top:1px solid var(--lav-dark)}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:480px){
+  .main{padding:20px 14px 40px}
+  .card{padding:18px}
+  .rule-grid{grid-template-columns:1fr}
+  .btn-primary{width:100%;justify-content:center}
+}
+
+/* ── UPGRADED DRAMATIC HEADER ── */
+.header{
+  background:var(--plum-dark,#3D2B4F);
+  padding:0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.header-inner{position:relative;z-index:3;padding:36px 24px 32px}
+
+/* Aurora blobs */
+.header-aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hau1{position:absolute;width:600px;height:500px;background:radial-gradient(circle,rgba(58,158,122,.45) 0%,transparent 65%);top:-30%;right:-10%;border-radius:50%;filter:blur(55px);animation:hDrift 14s ease-in-out infinite}
+.hau2{position:absolute;width:500px;height:420px;background:radial-gradient(circle,rgba(126,107,170,.5) 0%,transparent 65%);bottom:-20%;left:-8%;border-radius:50%;filter:blur(55px);animation:hDrift 18s ease-in-out infinite;animation-delay:-7s}
+.hau3{position:absolute;width:300px;height:280px;background:radial-gradient(circle,rgba(200,237,224,.2) 0%,transparent 65%);top:10%;left:35%;border-radius:50%;filter:blur(60px);animation:hDrift 10s ease-in-out infinite;animation-delay:-3s}
+@keyframes hDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(35px,-25px) scale(1.1)}66%{transform:translate(-25px,35px) scale(.92)}}
+
+/* Grid */
+.header-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,237,224,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(200,237,224,.1) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:1;mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 30%,transparent 100%)}
+
+/* Particles */
+.header-particles{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.hparticle{position:absolute;border-radius:50%;background:var(--mint,#C8EDE0);opacity:0;animation:hFloat linear infinite;box-shadow:0 0 8px 2px rgba(200,237,224,.5)}
+@keyframes hFloat{0%{transform:translateY(100%) translateX(0);opacity:0}15%{opacity:.7}85%{opacity:.3}100%{transform:translateY(-80px) translateX(30px);opacity:0}}
+
+/* Text styles */
+.header-brand{font-size:.68rem;letter-spacing:.25em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:10px;display:block}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px}
+.header h1 span{color:var(--mint,#C8EDE0);font-family:var(--fd,serif);font-style:italic}
+.header-sub,.header-tagline{font-size:.9rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.6;max-width:500px;margin:0 auto}
+
+/* Header tag badge */
+.header-tag{display:inline-block;border:1px solid rgba(200,237,224,.3);color:var(--mint,#C8EDE0);font-size:.65rem;letter-spacing:.18em;padding:4px 14px;border-radius:2px;margin-bottom:14px;font-weight:600;text-transform:uppercase;animation:hTagPulse 3s ease infinite}
+@keyframes hTagPulse{0%,100%{border-color:rgba(200,237,224,.3);box-shadow:none}50%{border-color:rgba(200,237,224,.7);box-shadow:0 0 12px rgba(200,237,224,.2)}}
+
+/* Stats row under header */
+.header-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.header-stat{background:rgba(255,255,255,.09);backdrop-filter:blur(12px);border:1px solid rgba(200,237,224,.2);border-radius:8px;padding:8px 18px;font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:.06em}
+.header-stat strong{color:var(--mint,#C8EDE0);font-size:1rem;display:block;line-height:1.2}
+
+/* ── UPGRADED CARD & UI STYLES ── */
+.card{
+  background:var(--white);
+  border:1px solid var(--lav-dark,#E0E0F0);
+  border-radius:14px;
+  padding:28px;
+  margin-bottom:18px;
+  animation:fadeUp .5s cubic-bezier(.22,1,.36,1) both;
+  box-shadow:0 2px 16px rgba(90,72,144,.06);
+  transition:box-shadow .3s,border-color .3s;
+}
+.card:hover{box-shadow:0 6px 28px rgba(90,72,144,.11);border-color:rgba(90,72,144,.18)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Progress bar upgraded */
+.progress-bar{display:flex;gap:0;margin-bottom:28px;border-radius:10px;overflow:hidden;border:none;box-shadow:0 2px 12px rgba(90,72,144,.1)}
+.progress-step{flex:1;padding:11px 6px;text-align:center;font-size:.76rem;font-weight:600;color:var(--char-light,#888);background:#fff;transition:all .3s;letter-spacing:.04em;border-right:1px solid rgba(90,72,144,.08)}
+.progress-step:last-child{border-right:none}
+.progress-step.active{background:linear-gradient(135deg,var(--plum,#7E6BAA),var(--plum-dark,#5A4890));color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.progress-step.done{background:linear-gradient(135deg,var(--teal,#3A9E7A),#2A8060);color:#fff}
+
+/* Buttons upgraded */
+.btn-primary{
+  background:linear-gradient(135deg,var(--mint,#C8EDE0),var(--mint-dark,#A8DCC8));
+  color:var(--teal,#3A9E7A);
+  border:none;
+  padding:14px 30px;
+  border-radius:10px;
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+  font-family:var(--fb);
+  transition:all .25s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 4px 16px rgba(58,158,122,.2);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(58,158,122,.3)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+.step-label{
+  font-size:.7rem;letter-spacing:.2em;
+  color:var(--teal,#3A9E7A);font-weight:700;
+  text-transform:uppercase;margin-bottom:6px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.step-label::before{content:'';display:inline-block;width:18px;height:2px;background:var(--teal,#3A9E7A);border-radius:2px}
+
+/* Result/output box */
+.result-box, .output-box, .prompt-output{
+  background:linear-gradient(135deg,var(--plum-dark,#5A4890),#3D2B4F);
+  border:1px solid rgba(200,237,224,.2);
+  border-radius:12px;
+  padding:24px;
+  color:rgba(255,255,255,.9);
+  position:relative;
+  overflow:hidden;
+}
+.result-box::before,.output-box::before,.prompt-output::before{
+  content:'';position:absolute;top:-30%;right:-10%;
+  width:250px;height:250px;
+  background:radial-gradient(circle,rgba(58,158,122,.25),transparent);
+  border-radius:50%;filter:blur(40px);pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-aurora">
+    <div class="hau1"></div>
+    <div class="hau2"></div>
+    <div class="hau3"></div>
+  </div>
+  <div class="header-grid"></div>
+  <div class="header-particles"></div>
+  <div class="header-inner">
+    <span class="header-tag">RECODE ACADEMY · DAY 5</span>
+    <p class="header-brand">Heart Recode · Recode Academy</p>
+    <h1><span>ตัดสินใจได้</span> — ด้วยกติกาของตัวเอง</h1>
+    <p class="header-sub">บอกสิ่งที่ค้างใจ — ระบบช่วยสร้างกติกาที่ใช้ตัดสินใจได้ทันที</p>
+    <div class="header-stats">
+      <div class="header-stat"><strong>1</strong> คำถาม</div>
+      <div class="header-stat"><strong>1 กติกา</strong> ตัดสินใจได้เลย</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="progress-bar">
+    <div class="progress-step active" id="s1-bar">บอกเรื่อง</div>
+    <div class="progress-step" id="s2-bar">เลือกแนวทาง</div>
+    <div class="progress-step" id="s3-bar">เขียนประโยค</div>
+    <div class="progress-step" id="s4-bar">กติกาของคุณ</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="step1" class="card">
+    <p class="step-label">เริ่มต้น</p>
+    <p class="step-title">วันนี้กำลังตัดสินใจเรื่องอะไรอยู่คะ?</p>
+    <p class="step-desc">เขียนสั้น ๆ ได้เลย ไม่ต้องเรียบเรียง<br>แค่บอกเรื่องที่ค้างใจอยู่ตอนนี้ค่ะ</p>
+    <textarea id="in1" placeholder="เช่น ไม่รู้จะรับงานเพิ่มดีไหม&#10;หรือ ยังลังเลว่าจะพูดกับหัวหน้าเรื่องนี้ดีไหม&#10;หรือ ต้องตัดสินใจเรื่องทีมงานแต่กลัวผิดพลาด" rows="4"></textarea>
+    <div style="margin-top:14px">
+      <button class="btn-primary" onclick="goStep2()">ไปต่อ →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="card" style="display:none">
+    <p class="step-label">เลือกแนวทาง</p>
+    <p class="step-title">เรื่องนี้ติดอยู่ตรงไหนมากกว่ากันคะ?</p>
+    <p class="step-desc">เลือก 1 แบบที่ใกล้เคียงกับความรู้สึกของคุณมากที่สุดค่ะ</p>
+    <div class="rule-grid">
+      <div class="rule-card" id="ruleA" onclick="selectRule('A')">
+        <div class="rule-tag">แนวทาง A</div>
+        <h3>ติดที่เหตุผล</h3>
+        <p>ยังไม่แน่ใจว่าทางไหนได้เปรียบกว่า หรือกลัวเสียต้นทุนถ้าตัดสินใจผิด</p>
+      </div>
+      <div class="rule-card" id="ruleB" onclick="selectRule('B')">
+        <div class="rule-tag">แนวทาง B</div>
+        <h3>ติดที่ความรู้สึก</h3>
+        <p>รู้ว่าควรทำอะไร แต่กลัวผิดพลาด กลัวไม่ดีพอ หรือรู้สึกผิดถ้าเลือก</p>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn-primary" id="btn-step2" onclick="goStep3()" disabled>เลือกแล้ว ไปต่อ →</button>
+      <button class="btn-secondary" onclick="backTo(1,2)">← กลับ</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="card" style="display:none">
+    <p class="step-label">สร้างกติกา</p>
+    <p class="step-title" id="step3-title">ถ้าจะเลือกทางที่ "ต้นทุนเพิ่มน้อยกว่า"<br>วันนี้คุณจะเลือกอะไรคะ?</p>
+    <p class="step-desc">เขียนตอบสั้น ๆ แค่ 1-2 ประโยค ไม่ต้องสมบูรณ์ค่ะ</p>
+    <textarea id="in3" placeholder="เขียนคำตอบของคุณได้เลยค่ะ..." rows="3"></textarea>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-primary" onclick="goStep4()">สร้างกติกาของฉัน →</button>
+      <button class="btn-secondary" onclick="backTo(2,3)">← กลับ</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 OUTPUT -->
+  <div id="step4" style="display:none">
+    <div class="done-banner">✅ กติกาของคุณพร้อมแล้วค่ะ</div>
+
+    <div class="card">
+      <div id="ai-loading" class="ai-loading" style="display:none">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <span>กำลังสร้างกติกาของคุณ...</span>
+      </div>
+
+      <div id="output-section" style="display:none">
+        <div class="output-main">
+          <p class="output-label">🗡️ กติกาและประโยคของคุณ</p>
+          <button class="copy-btn" onclick="copyText('main-output', this)">Copy</button>
+          <p class="output-text" id="main-output"></p>
+        </div>
+
+        <p class="step-label" style="margin-bottom:10px">เลือก 1 โทนที่อ่านแล้วหายใจได้ค่ะ</p>
+        <div class="rewrite-grid" id="rewrite-grid"></div>
+
+        <div class="action-row" style="margin-top:6px">
+          <button class="btn-primary" onclick="downloadResult()">⬇️ Download .txt</button>
+          <button class="btn-secondary" onclick="startOver()">เริ่มใหม่</button>
+        </div>
+
+        <p style="font-size:.78rem;color:var(--char-light);margin-top:14px;text-align:center;font-style:italic">
+          นำประโยคที่ชอบไปวางใน Canva หรือบันทึกไว้ใช้ในวันที่ตัดสินใจยากค่ะ 🗡️
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>ตัดสินใจได้ by <a href="index.html">Heart Recode</a> · Recode Academy</p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let selectedRule = '';
+let resultData = {};
+
+function goStep2() {
+  const val = document.getElementById('in1').value.trim();
+  if (!val) { showToast('เขียนเรื่องที่ค้างใจก่อนนะคะ'); return; }
+  show('step2'); hide('step1'); updateProgress(2);
+}
+
+function selectRule(r) {
+  selectedRule = r;
+  document.getElementById('ruleA').classList.toggle('selected', r==='A');
+  document.getElementById('ruleB').classList.toggle('selected', r==='B');
+  document.getElementById('btn-step2').disabled = false;
+
+  const title = r === 'A'
+    ? 'ถ้าจะเลือกทางที่ "ต้นทุนเพิ่มน้อยกว่า"<br>วันนี้คุณจะเลือกอะไรคะ?'
+    : 'ถ้าจะเลือกทางที่ "เคารพตัวเองมากกว่า"<br>วันนี้คุณจะเลือกอะไรคะ?';
+  document.getElementById('step3-title').innerHTML = title;
+}
+
+function goStep3() {
+  if (!selectedRule) return;
+  show('step3'); hide('step2'); updateProgress(3);
+}
+
+async function goStep4() {
+  const answer = document.getElementById('in3').value.trim();
+  if (!answer) { showToast('เขียนคำตอบก่อนนะคะ'); return; }
+
+  hide('step3');
+  show('step4');
+  document.getElementById('ai-loading').style.display = 'flex';
+  document.getElementById('output-section').style.display = 'none';
+  updateProgress(4);
+
+  const topic = document.getElementById('in1').value.trim();
+  const ruleType = selectedRule === 'A' ? 'เหตุผล/ต้นทุน' : 'ความรู้สึก/การเคารพตัวเอง';
+
+  try {
+    const system = `คุณคือผู้ช่วยสร้างกติกาการตัดสินใจส่วนตัว
+ตอบเป็น JSON object มี 4 key: "rule", "inner", "executive", "gentle", "direct"
+rule: กติกา 1 ประโยค ที่ใช้ตัดสินใจได้ทันที ภาษาไทย กระชับ มีพลัง
+inner: ประโยคภายใน 1 ประโยค ที่เป็นเสียงของผู้ใช้เอง
+executive: rewrite โทนผู้บริหาร นิ่ง คม
+gentle: rewrite โทนอ่อนโยน ละมุน
+direct: rewrite โทนตรง สั้น ชัด
+ห้ามใช้คำว่า FACT FOCUS FORM หรืออธิบายทฤษฎีใด ๆ`;
+
+    const prompt = `เรื่องที่ต้องตัดสินใจ: ${topic}
+แนวทางที่เลือก: ${ruleType}
+คำตอบของผู้ใช้: ${answer}
+
+สร้างกติกาและประโยคภายในให้ค่ะ`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system,
+        messages: [{role:'user', content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.map(c=>c.text||'').join('') || '';
+    const clean = text.replace(/```json|```/g,'').trim();
+    resultData = JSON.parse(clean);
+  } catch(e) {
+    resultData = {
+      rule: `ฉันเลือกทางที่${selectedRule==='A'?'ต้นทุนเพิ่มน้อยกว่า':'เคารพตัวเองมากกว่า'} — ${answer}`,
+      inner: answer,
+      executive: answer,
+      gentle: answer,
+      direct: answer
+    };
+  }
+
+  document.getElementById('ai-loading').style.display = 'none';
+  document.getElementById('output-section').style.display = 'block';
+
+  document.getElementById('main-output').textContent =
+    `กติกาที่ฉันยึดวันนี้:\n${resultData.rule}\n\nประโยคภายใน:\n${resultData.inner}`;
+
+  const tones = [
+    {label:'โทนผู้บริหาร — นิ่ง คม', text: resultData.executive},
+    {label:'โทนอ่อนโยน — ละมุน', text: resultData.gentle},
+    {label:'โทนตรง — สั้น ชัด', text: resultData.direct}
+  ];
+
+  document.getElementById('rewrite-grid').innerHTML = tones.map((t,i) => `
+    <div class="rewrite-card" onclick="copyRewrite(${i}, this)">
+      <p class="rewrite-tone">${t.label}</p>
+      <p class="rewrite-text">${escHtml(t.text)}</p>
+      <p class="rewrite-copy">กดเพื่อ Copy ค่ะ</p>
+    </div>
+  `).join('');
+
+  window._tones = tones;
+}
+
+function copyRewrite(i, el) {
+  navigator.clipboard.writeText(window._tones[i].text).then(() => {
+    el.querySelector('.rewrite-copy').textContent = '✓ Copy แล้วค่ะ';
+    setTimeout(() => el.querySelector('.rewrite-copy').textContent = 'กดเพื่อ Copy ค่ะ', 2000);
+    showToast('Copy แล้วค่ะ นำไปใช้ได้เลย 🗡️');
+  });
+}
+
+function copyText(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadResult() {
+  const topic = document.getElementById('in1').value.trim();
+  const content = `ตัดสินใจได้ — ด้วยกติกาของตัวเอง\nHeart Recode · Recode Academy\n${'='.repeat(40)}\n\nเรื่องที่ตัดสินใจ:\n${topic}\n\nกติกาที่ฉันยึดวันนี้:\n${resultData.rule}\n\nประโยคภายใน:\n${resultData.inner}\n\n${'='.repeat(40)}\nRewrite 3 โทน\n\nโทนผู้บริหาร:\n${resultData.executive}\n\nโทนอ่อนโยน:\n${resultData.gentle}\n\nโทนตรง:\n${resultData.direct}`;
+  const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href=url; a.download='กติกาของฉัน_'+Date.now()+'.txt';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Download แล้วค่ะ 🗡️');
+}
+
+function startOver() {
+  selectedRule = ''; resultData = {};
+  ['in1','in3'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('ruleA').classList.remove('selected');
+  document.getElementById('ruleB').classList.remove('selected');
+  document.getElementById('btn-step2').disabled = true;
+  show('step1');
+  ['step2','step3','step4'].forEach(id => hide(id));
+  updateProgress(1);
+}
+
+function backTo(showStep, hideStep) {
+  show('step'+showStep); hide('step'+hideStep);
+  updateProgress(showStep);
+}
+
+function show(id){ document.getElementById(id).style.display='block'; }
+function hide(id){ document.getElementById(id).style.display='none'; }
+
+function updateProgress(step) {
+  const labels = ['s1-bar','s2-bar','s3-bar','s4-bar'];
+  labels.forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'progress-step';
+    if(i+1 < step) el.classList.add('done');
+    else if(i+1 === step) el.classList.add('active');
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+function escHtml(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+</body>
+</html>
