@@ -18,11 +18,11 @@
   function gtag_report_conversion(url) {
     var callback = function () {
       if (typeof(url) != 'undefined') {
-        window.location = url;
+        window.open(url, '_blank');
       }
     };
     gtag('event', 'conversion', {
-        'send_to': 'AW-17764598682/tdZNCMTnqJ4cEJqH6ZZC',
+        'send_to': 'AW-17764598682/L8iSCLy03fQZEOra5L4-',
         'event_callback': callback
     });
     return false;
